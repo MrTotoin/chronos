@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nombre: MyString
+  apellido: MyString
+  fecha_nacimiento: MyString
+  club: MyString
+  sexo: MyString
+
+two:
+  nombre: MyString
+  apellido: MyString
+  fecha_nacimiento: MyString
+  club: MyString
+  sexo: MyString
