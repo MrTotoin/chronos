@@ -7,10 +7,7 @@ Chronos::Application.routes.draw do
   root :to => 'paginas#home'
 
   match '/nuevonadador', :to => 'nadadors#new'
-  #match '/nadadors' , :to => 'nadadors#home'
-  #match '/nadadores' , :to => 'nadadors#home'
-
-  
+  match '/nadadores_home' , :to => 'paginas#nadadores'
   match '/entrenamientos', :to => 'paginas#entrenamientos'
   match '/competencias', :to => 'paginas#competencias'
 #  match '/datos', :to => 'paginas#datos'

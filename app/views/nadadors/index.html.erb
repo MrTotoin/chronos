@@ -1,4 +1,24 @@
-<h1>NADADORES</H1>
-	<ul>
-		<li> <%= link_to "Agregar nadador", nuevonadador_path %></li>
-	</ul>
+<h1>Nadadores</H1>
+	<table>
+		<tr>
+		<th>ID</th>	
+		<th>Nombre</th>
+		<th>Apellido</th>
+		<th>Sexo</th>
+		<th>Fecha de Nacimiento</th>
+		<th>Club</th>
+		
+		</tr>
+		<% @nadadores.each do |nadador| %>
+		<tr>
+			<td> <%= nadador.id %> </td>
+			<td> <%= nadador.nombre %> </td>
+			<td> <%= nadador.apellido %> </td>
+			<td> <%= nadador.sexo %> </td>
+			<td> <%= nadador.fecha_nacimiento %> </td>
+			<td> <%= nadador.club %> </td>
+			<td> <%= link_to 'editar', edit_nadador_path(nadador.id) %> </td>
+			<td> <%= link_to 'borrar', nadador, :confirm => 'Esta a punto de borrar un nadador, ¿desea continuar?', :method => :delete %> </td>
+		</tr>
+		<% end %> 
+	</table>

@@ -1,0 +1,27 @@
+<h1> Editar nadador </h1>
+
+<%= form_for(@nadador) do |f| %>
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+	<div class="field">
+    <%= f.label :apellido %><br />
+    <%= f.text_field :apellido %>
+  </div>
+	<div class="field">
+    <%= f.label :sexo %><br />
+    <%= f.text_field :sexo %>
+  </div>
+	<div class="field">
+    <%= f.label :fecha_nacimiento %><br />
+    <%= f.text_field :fecha_nacimiento %>
+  </div>
+	<div class="field">
+    <%= f.label :club %><br />
+    <%= f.text_field :club %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Actualizar" %>
+  </div>
+<% end %>

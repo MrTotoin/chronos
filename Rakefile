@@ -4,4 +4,7 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
+#necesario para que corra sin errores rake db:migrate
+include Rake::DSL
+
 Chronos::Application.load_tasks
