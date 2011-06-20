@@ -5,6 +5,14 @@ class PaginasController < ApplicationController
   def nadadores
     @title = "Nadadores"
   end
+  
+  def entrenamientos
+     @title = "Entrenamientos"
+  end
+  
+  def competencias
+      @title = "Competencias"
+  end
 
   def configuraciones
     @title = "Configuraciones"
