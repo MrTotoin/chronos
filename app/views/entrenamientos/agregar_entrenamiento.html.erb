@@ -1,0 +1,21 @@
+<h1>Nuevo Entrenamiento</h1> 
+formulario -> selecciona nadador, tipo de prueba y poner un boton para contiuar. 
+	<br>Continuar significa redireccionar a la pagina new y esperar los datos de la unidad central. Cuando esten los datos en pantalla (la pantalla reflejara una tabla que funcionara como scratch), se preguntara si se quiere salvar esos datos (ahi los guardara en la tabla Entrenamientos). <br>
+	
+ 	
+	<%= form_for(@entrenamiento) do |f| %>
+	  <div class="field">
+	    <%= f.label :Nadador %><br />
+	    <%= f.collection_select :nadador_id, @nadadores, :id,:nombre_completo %>	
+	  </div>
+	
+		<div>
+			<%= f.label :tipo_de_prueba %><br />
+			<%= f.select :tipo_prueba, [['100mts pecho', 1], ['50mts pecho', 2], ['mediocre', 3], ['good', 4], ['great', 5]]%>	
+		</div>
+	  <div class="actions">
+	    <%= f.submit "continuar" %>
+	  </div>
+	<% end %>
+
+

@@ -2,17 +2,20 @@ Chronos::Application.routes.draw do
   #get "nadadores/new"
   resources :nadadors
   #get "entrenamientos/new"
-  #resources :entrenamientos
+  resources :entrenamientos
 
   root :to => 'paginas#home'
 
-#  match '/nuevonadador', :to => 'nadadors#new'
   match '/nadadores_home' , :to => 'paginas#nadadores'
-  match '/entrenamientos', :to => 'paginas#entrenamientos'
+  match '/entrenamientos_home', :to => 'paginas#entrenamientos'
   match '/competencias', :to => 'paginas#competencias'
 #  match '/datos', :to => 'paginas#datos'
   match '/configuraciones', :to => 'paginas#configuraciones'
   match '/about', :to => 'paginas#about'
+  
+  
+  match '/agregar_entrenamiento', :to => 'entrenamientos#agregar_entrenamiento'
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

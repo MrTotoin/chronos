@@ -19,17 +19,10 @@ class NadadorsController < ApplicationController
          end
       end
       
-      
-      #
-      #NO FUNCIONA....ver
       def destroy
           @nadador = Nadador.find(params[:id])
           @nadador.destroy
           redirect_to nadadors_path
-          #respond_to do |format|
-          #  format.html { redirect_to(nadadors_path) }
-          #  format.xml  { head :ok }
-          #end 
       end
 
       def show
