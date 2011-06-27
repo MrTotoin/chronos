@@ -1,21 +1,25 @@
 <h1>Nuevo Entrenamiento</h1> 
-formulario -> selecciona nadador, tipo de prueba y poner un boton para contiuar. 
-	<br>Continuar significa redireccionar a la pagina new y esperar los datos de la unidad central. Cuando esten los datos en pantalla (la pantalla reflejara una tabla que funcionara como scratch), se preguntara si se quiere salvar esos datos (ahi los guardara en la tabla Entrenamientos). <br>
-	
+
  	
 	<%= form_for(@entrenamiento) do |f| %>
 	  <div class="field">
-	    <%= f.label :Nadador %><br />
+	    <%= f.label :nadador %><br />
 	    <%= f.collection_select :nadador_id, @nadadores, :id,:nombre_completo %>	
 	  </div>
 	
 		<div>
 			<%= f.label :tipo_de_prueba %><br />
-			<%= f.select :tipo_prueba, [['100mts pecho', 1], ['50mts pecho', 2], ['mediocre', 3], ['good', 4], ['great', 5]]%>	
+			<%= f.select :tipo_prueba, [['Crawl', 1], ['Pecho', 2], ['Mariposa', 3], ['Espalda', 4], ['Combinados', 5]]%>	
+		</div>
+		<div>
+			<%= f.label :distancia %><br />
+			<%= f.select :distancia, [['25mts', 1], ['50mts', 2], ['100mts', 3], ['200mts', 4], ['500mts', 5]]%>	
 		</div>
 	  <div class="actions">
 	    <%= f.submit "continuar" %>
 	  </div>
 	<% end %>
 
-
+<pr>
+<strong> Cambiar la accion del boton continuar. Ahora esta linkeado a la action create e inserta los datos (seleccionados) en la tabla Entrenamientos. Se debe redireccionar a la action/pagina new y esperar los datos de la unidad central y ahi si guardarlos en la tabla Entrenamientos.</strong> <br>
+</pr>

@@ -6,6 +6,8 @@ class NadadorsController < ApplicationController
 
       def create
         @nadador = Nadador.new(params[:nadador]) #toma los valores que le pasa el formulario de new a travez de params[:nadador] y crea una nueva variable de instancia
+        @nadador.nombre = @nadador.nombre.capitalize
+        @nadador.apellido = @nadador.apellido.capitalize
         if @nadador.save  
           #flash[:success] = "Welcome to the Sample App!"
           @title = "Nadadores"
