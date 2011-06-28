@@ -1,25 +1,16 @@
 <h1>Nuevo Entrenamiento</h1> 
-
- 	
-	<%= form_for(@entrenamiento) do |f| %>
-	  <div class="field">
-	    <%= f.label :nadador %><br />
-	    <%= f.collection_select :nadador_id, @nadadores, :id,:nombre_completo %>	
-	  </div>
-	
-		<div>
-			<%= f.label :tipo_de_prueba %><br />
-			<%= f.select :tipo_prueba, [['Crawl', 1], ['Pecho', 2], ['Mariposa', 3], ['Espalda', 4], ['Combinados', 5]]%>	
-		</div>
-		<div>
-			<%= f.label :distancia %><br />
-			<%= f.select :distancia, [['25mts', 1], ['50mts', 2], ['100mts', 3], ['200mts', 4], ['500mts', 5]]%>	
-		</div>
-	  <div class="actions">
-	    <%= f.submit "continuar" %>
-	  </div>
+	<% form_tag(new_entrenamiento_path, :method=>'get', :multipart => true) do %>
+		<b> Nadador </b>
+		<%= select(:nombre, :id, Nadador.find(:all, :order => "apellido").collect {|p| [ p.nombre_completo, p.id ]}) %> <br>
+		<b> Tipo de prueba </b>
+		<%= select_tag "tipo_de_prueba", options_for_select( ['Crawl','Pecho', 'Mariposa', 'Espalda', 'Combinados'],"Crawl") %> <br>
+		<b> Distancia </b>
+		<%= select_tag "distancia", options_for_select( ['25','50','100','150','200'],'25') %> <br>
+		<%= submit_tag "Continuar"  %> <br>
 	<% end %>
-
+ 	
 <pr>
-<strong> Cambiar la accion del boton continuar. Ahora esta linkeado a la action create e inserta los datos (seleccionados) en la tabla Entrenamientos. Se debe redireccionar a la action/pagina new y esperar los datos de la unidad central y ahi si guardarlos en la tabla Entrenamientos.</strong> <br>
+<strong>
+La accion del boton nos lleva a la pagina entrenamientos/new usando el metodo GET. En esta pagina podemos mirar los parametros con a travez del hash params[] (ej:params[:tipo_de_prueba]). Hay que corregir el select, porque ahora toma el id, pero deberia tomar el id y mostrar el nombre completo del nadador (deberia buscar en la tabla Nadadors, creo que hay que hacer un helper...)
+</strong> <br>
 </pr>

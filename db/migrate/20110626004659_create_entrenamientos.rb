@@ -3,6 +3,7 @@ class CreateEntrenamientos < ActiveRecord::Migration
     create_table :entrenamientos do |t|
       t.integer :nadador_id
       t.string :tipo_prueba
+      t.string :distancia
       t.decimal :tiempo
 
       t.timestamps

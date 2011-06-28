@@ -10,15 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110627005027) do
+ActiveRecord::Schema.define(:version => 20110626004659) do
 
   create_table "entrenamientos", :force => true do |t|
     t.integer  "nadador_id"
     t.string   "tipo_prueba"
+    t.string   "distancia"
     t.decimal  "tiempo"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "distancia"
   end
 
   create_table "nadadors", :force => true do |t|
