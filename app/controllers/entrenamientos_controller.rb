@@ -16,7 +16,7 @@ class EntrenamientosController < ApplicationController
         @borrador.competencia = false
         @borrador.borrar = false        
         if @borrador.save  
-            @title = "Nadadores"
+            @title = "Esperando datos"
         else
             @title = "FALLO AL GUARDAR"
             redirect_to entrenamientos_home_path
