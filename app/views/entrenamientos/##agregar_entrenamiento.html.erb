@@ -1,0 +1,16 @@
+<h1>Nuevo Entrenamiento</h1> 
+	<% form_tag(new_entrenamiento_path, :method=>'get', :multipart => true) do %>
+		<b> Nadador </b>
+		<%= select(:nombre, :id, Nadador.find(:all, :order => "apellido").collect {|p| [ p.nombre_completo, p.id ]}) %> <br>
+		<b> Tipo de prueba </b>
+		<%= select_tag "tipo_de_prueba", options_for_select( ['Crawl','Pecho', 'Mariposa', 'Espalda', 'Combinados'],"Crawl") %> <br>
+		<b> Distancia </b>
+		<%= select_tag "distancia", options_for_select( ['25 mts','50 mts','100 mts','150 mts','200 mts'],'25') %> <br>
+		<%= submit_tag "Continuar"  %> <br>
+	<% end %>
+ 	
+<pr>
+<strong>
+La accion del boton nos lleva a la pagina entrenamientos/new usando el metodo GET. En esta pagina podemos mirar los parametros con a travez del hash params[] (ej:params[:tipo_de_prueba]). Hay que corregir el select, porque ahora toma el id, pero deberia tomar el id y mostrar el nombre completo del nadador (deberia buscar en la tabla Nadadors, creo que hay que hacer un helper...)
+</strong> <br>
+</pr>

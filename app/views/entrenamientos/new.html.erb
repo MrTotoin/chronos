@@ -1,3 +1,25 @@
-<b>Aca espero los datos de la Unidad Central</b> <br>
+<h1>Nuevo Entrenamiento</h1> 
 
-Tipo de prueba: <%= params[:tipo_de_prueba] %>
+ 	
+	<%= form_for(@entrenamiento, :url => esperando_datos_path) do |f| %>
+	  <div class="field">
+	    <%= f.label :nadador %><br />
+	    <%= f.collection_select :nadador_id, @nadadores, :id,:nombre_completo %>	
+	  </div>
+	
+		<div>
+			<%= f.label :tipo_de_prueba %><br />
+			<%= f.select :tipo_prueba, ['Crawl','Pecho', 'Mariposa', 'Espalda', 'Combinados']%>	
+		</div>
+		<div>
+			<%= f.label :distancia %><br />
+			<%= f.select :distancia, [['25mts', 25], ['50mts', 50], ['100mts', 100], ['200mts', 200], ['500mts', 500]]%>	
+		</div>
+	  <div class="actions">
+	    <%= f.submit "continuar" %>
+	  </div>
+	<% end %>
+
+<pr>
+<strong> Cambiar la accion del boton continuar. Ahora esta linkeado a la action create e inserta los datos (seleccionados) en la tabla Entrenamientos. Se debe redireccionar a la action/pagina new y esperar los datos de la unidad central y ahi si guardarlos en la tabla Entrenamientos.</strong> <br>
+</pr>

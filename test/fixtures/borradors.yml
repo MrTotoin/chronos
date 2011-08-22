@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nadador_id: 1
+  tipo_prueba: MyString
+  tiempo: 9.99
+  distancia: 1
+  competencia: false
+  borrar: false
+
+two:
+  nadador_id: 1
+  tipo_prueba: MyString
+  tiempo: 9.99
+  distancia: 1
+  competencia: false
+  borrar: false

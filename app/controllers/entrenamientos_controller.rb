@@ -1,29 +1,32 @@
 class EntrenamientosController < ApplicationController
 
-    def agregar_entrenamiento
+    def new
        @title = "Nuevo entrenamiento"
        @nadadores = Nadador.find(:all, :order => "apellido")
        @entrenamiento = Entrenamiento.new 
-      
     end
     
-    #aca me redirecciona 
-        #el formulario de agregar_entrenamiento 
-        #el boton guardar de la pagina new
-    def create
+    
+    def esperando_datos
         @entrenamiento = Entrenamiento.new(params[:entrenamiento])
-        if @entrenamiento.save  
-          @title = "Nadadores"
-          redirect_to new_entrenamiento_path    
-         else
-          @title = "FALLO AL GUARDAR"
-          redirect_to entrenamientos_home_path
-         end
+        @borrador = Borrador.new
+        @borrador.nadador_id = @entrenamiento.nadador_id
+        @borrador.tipo_prueba = @entrenamiento.tipo_prueba
+        @borrador.distancia = @entrenamiento.distancia
+        @borrador.competencia = false
+        @borrador.borrar = false        
+        if @borrador.save  
+            @title = "Nadadores"
+        else
+            @title = "FALLO AL GUARDAR"
+            redirect_to entrenamientos_home_path
+        end
     end
     
-    def new
-      
-    end   
+    def create
         
+        #modificar este metodo para tomar el valor correspondiente de la tabla borrador y guardarlo en la tabla entrenamiento
+       
+    end
     
 end

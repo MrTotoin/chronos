@@ -15,7 +15,7 @@ Chronos::Application.routes.draw do
   
   
   match '/agregar_entrenamiento', :to => 'entrenamientos#agregar_entrenamiento'
-
+  match '/esperando_datos', :to => 'entrenamientos#esperando_datos'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
