@@ -46,9 +46,14 @@ class EntrenamientosController < ApplicationController
     end
     
     
-    def refresca
+    def wait
         #aca deberia ir algo asi como lo de abajo (creo)
         #render :partial => 'entrenamientos/tiempo'
-      end
+        #render :partial => 'entrenamientos/wait', :locals => { :variable_1 => @entrenamiento.tiempo.to_s, :variable_2 => @entrenamiento.tiempo.to_s}
+        render :update do |page|
+            page.replace_html :test_id, :text => @entrenamiento.tiempo.to_s
+        end
+        
+    end
     
 end

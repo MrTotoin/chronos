@@ -11,14 +11,22 @@
 <% if @entrenamiento.show_or_wait == false %>
 
 <!--debe carga un partial (hay que crearlo) en lugar de cargar TODA la pagina. Mirar el application.js -->
+
+
 		<div data-delay-load="<%= url_for() %>">
-			
-		<%= render :partial => 'entrenamientos/wait',
-		           :locals => { :variable_1 => @entrenamiento.tipo_prueba, 
-													  :variable_2 => t(:'text_2')} %>
-	
+		<!--		<%= render :partial => 'entrenamientos/wait', :locals => { :variable_1 => @entrenamiento.tipo_prueba, :variable_2 => t(:'text_2')} %>
+-->	
 		</div>
-		
+
+<div id="test_id">
+	<b> Estado (ahora muestra solo el tiempo) </b>
+
+	        :remote => true, :frequency => 15	%>
+  <%= @entrenamiento.tiempo.to_s %><br><br>
+</div>
+
+
+<%= link_to "Make test", :remote => true, :url => { :controller => "entrenamientos", :action => "wait" } %>		
 	
 	
 <% else %>
