@@ -6,6 +6,8 @@
 
 <b>	Tipo de prueba:</b> <%= @borrador.tipo_prueba %> <br>
 <b>	Distancia:</b>			<%= @borrador.distancia %> metros <br>
-<b>	Tiempo: </b> <br>
+<b>	Tiempo: </b> <%=  link_to "name", nil, :onclick => "alert('Hello world!');"
+ %><br>
 <br>
 <b>Aca espero los datos de la Unidad Central. El tiempo reflejara en tiempo real el valor guardado en la tabla Borrador. Cuando la unidad central detecte que se termino de contar el tiempo, debera setear el campo borrar=true en la tabla Borrador.Luego de que esto ocurra se le preguntara a la persona si quiere guardar o descartar el dato (creo que lo mejor es poner un helper que tenga un timer para cada un segundo se controle el flag borrar).</b> <br>
+

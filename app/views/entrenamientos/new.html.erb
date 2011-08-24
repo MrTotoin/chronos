@@ -1,7 +1,7 @@
 <h1>Nuevo Entrenamiento</h1> 
 
  	
-	<%= form_for(@entrenamiento, :url => esperando_datos_path) do |f| %>
+	<%= form_for(@entrenamiento) do |f| %>
 	  <div class="field">
 	    <%= f.label :nadador %><br />
 	    <%= f.collection_select :nadador_id, @nadadores, :id,:nombre_completo %>	

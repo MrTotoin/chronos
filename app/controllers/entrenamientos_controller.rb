@@ -23,10 +23,32 @@ class EntrenamientosController < ApplicationController
         end
     end
     
+    
+    
     def create
+        @entrenamiento = Entrenamiento.new(params[:entrenamiento])
         
-        #modificar este metodo para tomar el valor correspondiente de la tabla borrador y guardarlo en la tabla entrenamiento
+        # true = espero (la unidad central esta trabajando)
+        # false = muestro un entrenamiento de la base de datos
+        @entrenamiento.show_or_wait = false
+        if @entrenamiento.save
+            redirect_to @entrenamiento
+        else
+            @title = "FALLO AL GUARDAR"
+            redirect_to entrenamientos_home_path
+        end
        
     end
+    
+    def show
+        @entrenamiento = Entrenamiento.find(params[:id])
+        @title = "Entrenamiento de "+Nadador.find(@entrenamiento.nadador_id).nombre+Nadador.find(@entrenamiento.nadador_id).apellido
+    end
+    
+    
+    def refresca
+        #aca deberia ir algo asi como lo de abajo (creo)
+        #render :partial => 'entrenamientos/tiempo'
+      end
     
 end

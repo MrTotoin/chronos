@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110822035108) do
+ActiveRecord::Schema.define(:version => 20110823215806) do
 
   create_table "borradors", :force => true do |t|
     t.integer  "nadador_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20110822035108) do
     t.decimal  "tiempo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "show_or_wait"
   end
 
   create_table "nadadors", :force => true do |t|

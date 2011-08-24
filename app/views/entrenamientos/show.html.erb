@@ -1,1 +1,35 @@
-mostrara los datos de un entrenamiento en particular, de un nadador en particular
+	<h1> 
+		<%= Nadador.find(@entrenamiento.nadador_id).apellido %> 
+		<%= Nadador.find(@entrenamiento.nadador_id).nombre %>
+	</h1>
+
+
+		<b>	Tipo de prueba:</b> <%= @entrenamiento.tipo_prueba %> <br>
+		<b>	Distancia:</b>			<%= @entrenamiento.distancia %> metros <br>
+
+
+<% if @entrenamiento.show_or_wait == false %>
+
+<!--debe carga un partial (hay que crearlo) en lugar de cargar TODA la pagina. Mirar el application.js -->
+		<div data-delay-load="<%= url_for() %>">
+			
+		<%= render :partial => 'entrenamientos/wait',
+		           :locals => { :variable_1 => @entrenamiento.tipo_prueba, 
+													  :variable_2 => t(:'text_2')} %>
+	
+		</div>
+		
+	
+	
+<% else %>
+
+		aca va el codigo para mostrar el entrenamiento
+
+<% end %>
+
+<br>
+<br>
+
+<b>En esta pagina espero los datos de la unidad central (debo agregar una variable booleana a la tabla Entrenamientos para determinar si la linea almacenada en la base de datos es consistente). Esta pagina tambien servira para mostrar el estado de la unidad central (el estado se refrescara cada 1 seg), si esta adquiriendo datos o si ya termino de adquirir.Por ultimo esta pagina mostrar los datos de un entrenamiento en particular si es que la variable booleana asi lo determina (un if pregunta que parte de la pagina se cargara)</b> <br>
+
+
