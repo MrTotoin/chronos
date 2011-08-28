@@ -1,3 +1,17 @@
+<% content_for :head do %>
+	<% javascript_tag do %>
+		$(function () {  
+	      setTimeout(refresca_estado, 1000);  
+	  		});  
+
+		function refresca_estado() {  
+	  		var entrenamiento_id = $('#test_id').attr('data-id')	
+	  		$.getScript('/wait.js?entrenamiento_id=' + entrenamiento_id);  
+	  		setTimeout(refresca_estado, 1000);  
+			};
+	<% end %>
+<% end %>
+
 	<h1> 
 		<%= Nadador.find(@entrenamiento.nadador_id).apellido %> 
 		<%= Nadador.find(@entrenamiento.nadador_id).nombre %>

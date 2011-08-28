@@ -1,0 +1,3 @@
+$('#test_id').html("<%= escape_javascript( render @entrenamiento)%>");  
+
+// este codigo reemplaza el contenido dentro del DIV que esta dentro del if en el archivo show.html.erb
