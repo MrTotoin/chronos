@@ -9,35 +9,19 @@
 
 
 <% if @entrenamiento.show_or_wait == false %>
-
-<!--debe carga un partial (hay que crearlo) en lugar de cargar TODA la pagina. Mirar el application.js -->
-
-
-		<div data-delay-load="<%= url_for() %>">
-		<!--		<%= render :partial => 'entrenamientos/wait', :locals => { :variable_1 => @entrenamiento.tipo_prueba, :variable_2 => t(:'text_2')} %>
--->	
+		<div id="test_id" data-id="<%= @entrenamiento.id %>" >
+		<!-- 	esta div se carga con el partial _entrenamiento.js.erb que es llamado por el wait.js.erb 
+				cuando se llama al metodo wait del entrenamientos controller. Se le pasan datos dentro de
+				la etiqueta que abre el DIV -->
 		</div>
-
-<div id="test_id">
-	<b> Estado (ahora muestra solo el tiempo) </b>
-
-	        :remote => true, :frequency => 15	%>
-  <%= @entrenamiento.tiempo.to_s %><br><br>
-</div>
-
-
-<%= link_to "Make test", :remote => true, :url => { :controller => "entrenamientos", :action => "wait" } %>		
-	
-	
 <% else %>
-
-		aca va el codigo para mostrar el entrenamiento
-
+		<div id="test_id" data-id="<%= @entrenamiento.id %>" >
+		</div>
 <% end %>
 
 <br>
 <br>
 
-<b>En esta pagina espero los datos de la unidad central (debo agregar una variable booleana a la tabla Entrenamientos para determinar si la linea almacenada en la base de datos es consistente). Esta pagina tambien servira para mostrar el estado de la unidad central (el estado se refrescara cada 1 seg), si esta adquiriendo datos o si ya termino de adquirir.Por ultimo esta pagina mostrar los datos de un entrenamiento en particular si es que la variable booleana asi lo determina (un if pregunta que parte de la pagina se cargara)</b> <br>
+<b>Actualiza el tiempo (o cualquier otro dato dentro de la DIV cada 1 segundo. Hay que hacer la logica para mostrar distintas opciones o pensar como hacerlo para guardar el dato o borrarlo de la base de datos cuando se termina de nadar y ya estan los datos listos desde la unidad central. Falta ver como trabajar con archivos para mas adelante leer la memoria del microcontrolador como si fuese un archivo.  </b> <br>
 
 

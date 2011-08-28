@@ -12,10 +12,18 @@ Chronos::Application.routes.draw do
 #  match '/datos', :to => 'paginas#datos'
   match '/configuraciones', :to => 'paginas#configuraciones'
   match '/about', :to => 'paginas#about'
+ 
+  #
+  # => para hacer andar el script de jQuery
+  # => se tiene que rootear el wait.js para 
+  # => que funcione correctamente la llamada
+  # => de la funcion getScript () (se llama en 
+  # => el archivo aplication.js )
+  match 'wait.js', :to => 'entrenamientos#wait'
   
   
-  match '/agregar_entrenamiento', :to => 'entrenamientos#agregar_entrenamiento'
-  match '/esperando_datos', :to => 'entrenamientos#esperando_datos'
+  
+  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
