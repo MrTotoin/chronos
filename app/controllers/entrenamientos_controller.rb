@@ -24,22 +24,37 @@ class EntrenamientosController < ApplicationController
     
     def show
         @entrenamiento = Entrenamiento.find(params[:id])
-        @entrenamiento.show_or_wait
         @title = "Entrenamiento de "+Nadador.find(@entrenamiento.nadador_id).nombre+Nadador.find(@entrenamiento.nadador_id).apellido
     end
     
     
     def wait
-        #
-        # => LEO LA BASE DE DATOS
-        #
+        # => QUERY A LA BASE DE DATOS
         @entrenamiento = Entrenamiento.find(params[:entrenamiento_id])
+        # :entrenamiento_id viene del script de la vista show.html.erb
         #  @comments = Comment.where("article_id = ? and created_at > ?", params[:article_id], Time.at(params[:after].to_i))  
         # => :article_id y :after vienen de => public/javascripts/aplication.js
-        
         # aca puedo usar render porque ya tengo el dato de la base de datos y el metodo show ya fue llamado, entonces show.html.erb ya fue cargado.
         #render :partial => @entrenamiento      # => la vista /entrenamientos/_entrenamiento.html.erb
                
+    end
+    
+    def select
+        @entrenamiento = Entrenamiento.new #la necesita el form_for
+        @nadadores = Nadador.find(:all, :order => "apellido")
+        
+    end
+    
+    def list
+        # vengo de la vista select.html.erb
+        @entrenamientos = Entrenamiento.find(:all, :conditions => ["nadador_id = ?", params[:entrenamiento][:nadador_id]])
+        @nadador = Nadador.find(params[:entrenamiento][:nadador_id])
+    end
+    
+    def destroy
+        @entrenamiento = Entrenamiento.find(params[:id])
+        @entrenamiento.destroy
+        redirect_to list_path
     end
     
 end

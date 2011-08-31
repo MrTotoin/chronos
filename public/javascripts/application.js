@@ -3,7 +3,3 @@
 
 
 
-//este codigo llama al script wait.js dentro de views/entrenamientos. Hay que buscar la manera de que estas lineas solo se ejecuten en el entrenamientos/show.html.erb
-
-
-

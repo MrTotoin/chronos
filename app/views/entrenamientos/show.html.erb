@@ -1,3 +1,8 @@
+<!-- Este script  es insertado en el archivo /views/layouts/application.html.erb
+El mismo llama al script wait.js.erb cada 1 segundo y le pasa 
+los datos de la div que muestra el tiempo para poder hacer un query a
+la base de datos. Cuando se llama al wait.js automaticamente se llama 
+al metodo wait del entrenamientos controller.  -->
 <% content_for :head do %>
 	<% javascript_tag do %>
 		$(function () {  
@@ -5,31 +10,37 @@
 	  		});  
 
 		function refresca_estado() {  
-	  		var entrenamiento_id = $('#test_id').attr('data-id')	
+	  		var entrenamiento_id = $('#div_tiempo').attr('data-id')	
 	  		$.getScript('/wait.js?entrenamiento_id=' + entrenamiento_id);  
 	  		setTimeout(refresca_estado, 1000);  
 			};
 	<% end %>
 <% end %>
 
+
+	<!-- Header1: Apellido, Nombre del nadador en cuestion-->
 	<h1> 
 		<%= Nadador.find(@entrenamiento.nadador_id).apellido %> 
 		<%= Nadador.find(@entrenamiento.nadador_id).nombre %>
 	</h1>
 
+	<b>	Tipo de prueba:</b> <%= @entrenamiento.tipo_prueba %> <br>
+	<b>	Distancia:</b>			<%= @entrenamiento.distancia %> metros <br>
 
-		<b>	Tipo de prueba:</b> <%= @entrenamiento.tipo_prueba %> <br>
-		<b>	Distancia:</b>			<%= @entrenamiento.distancia %> metros <br>
-
-
+	<!-- Inserta el estado o el tiempo segun corresponda mediante la 
+		 lectura del campo show_or_wait. Y el div se refresca automaticamente
+		 cada 1 segundo.  -->
 <% if @entrenamiento.show_or_wait == false %>
-		<div id="test_id" data-id="<%= @entrenamiento.id %>" >
-		<!-- 	esta div se carga con el partial _entrenamiento.js.erb que es llamado por el wait.js.erb 
-				cuando se llama al metodo wait del entrenamientos controller. Se le pasan datos dentro de
-				la etiqueta que abre el DIV -->
+		<div id="div_tiempo" data-id="<%= @entrenamiento.id %>" >
+		<!-- 	esta div se refresca con el partial _entrenamiento.js.erb que es 
+				llamado por el wait.js.erb cuando se llama al metodo wait del
+				entrenamientos controller. Se le pasan datos dentro de la 
+				etiqueta que abre el DIV.  -->
+			<b> Tiempo:</b>			 		<%= @entrenamiento.tiempo %>	<br>
 		</div>
+		
 <% else %>
-		<div id="test_id" data-id="<%= @entrenamiento.id %>" >
+		<div id="div_tiempo/estado" data-id="<%= @entrenamiento.id %>" >
 		</div>
 <% end %>
 

@@ -1,3 +1,4 @@
 <b> Tiempo:</b>			 		<%= @entrenamiento.tiempo %>	<br>
 
-<!-- Este archivo es llamado cada vez que se invoca la linea render @entrenamiento. Esta linea esta en el scrip wait.js.erb que es llamado por el scrypt /publics/javascript/application.js -->
+<!-- Este archivo es llamado cada vez que se invoca la linea render @entrenamiento. Esta linea esta en el script wait.js.erb que es llamado cada un segundo por el script que se corre en la pagina /views/entrenamientos/show.html.erb. 
+Por ahora solo actualiza tiempo, aunque en rigor este partial deberia presentar todos los campos del modelo entrenamientos. -->

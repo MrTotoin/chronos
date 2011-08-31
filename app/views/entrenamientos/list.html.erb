@@ -1,0 +1,24 @@
+<h1>Entrenamientos de <%= @nadador.nombre %> <%= @nadador.apellido %></H1>
+	<table>
+		<tr>
+			<th>EntrenamientoID</th>	
+			<th>NadadorID</th>	
+			<th>Estilo</th>
+			<th>Distancia</th>
+			<th>Tiempo</th>
+			<th>Fecha</th>
+			<th> </th>
+		</tr>
+		<% @entrenamientos.each do |entrenamiento| %>
+		<tr>
+			<td> <%= entrenamiento.id %> </td>
+			<td> <%= entrenamiento.nadador_id %> </td>
+			<td> <%= entrenamiento.tipo_prueba %> </td>
+			<td> <%= entrenamiento.distancia %> </td>
+			<td> <%= entrenamiento.tiempo %> </td>
+			<td> <%= entrenamiento.created_at.strftime("%d/%m/%Y") %> </td>
+			<!-- strftime() cambia la forma de mostrar el texto -->
+			<td> <%= link_to 'Eliminar', entrenamiento, :confirm => 'Esta a punto de borrar un entrenamiento, ¿desea continuar?', :method => :delete %> </td>
+		</tr>
+		<% end %> 
+	</table>

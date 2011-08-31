@@ -1,7 +1,5 @@
 Chronos::Application.routes.draw do
-  #get "nadadores/new"
   resources :nadadors
-  #get "entrenamientos/new"
   resources :entrenamientos
 
   root :to => 'paginas#home'
@@ -12,8 +10,12 @@ Chronos::Application.routes.draw do
 #  match '/datos', :to => 'paginas#datos'
   match '/configuraciones', :to => 'paginas#configuraciones'
   match '/about', :to => 'paginas#about'
- 
-  #
+  
+  match 'select_nadador', :to => 'entrenamientos#select'
+#  match '/entrenamientos/select_nadador' => 'entrenamientos#select', :as => :select_nadador
+ # match 'list', :to => 'entrenamientos#list'
+  match '/entrenamientos/list', :to => 'entrenamientos#list'
+
   # => para hacer andar el script de jQuery
   # => se tiene que rootear el wait.js para 
   # => que funcione correctamente la llamada

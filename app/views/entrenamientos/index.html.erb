@@ -1,1 +1,20 @@
+<% if (@entrenamientos.nil?==false) %>
+	<h1>Seleccionar Nadador</h1>
+
+	<%= form_for @entrenamiento, :url => {:controller => 'entrenamientos',:action => 'index'}  do |f| %>
+	 	<div class="field">
+	   <%= f.label :nadador %><br />
+	   <%= f.collection_select :nadador_id, @nadadores, :id,:nombre_completo %>	
+		</div>
+		<div class="actions">
+	   <%= f.submit "continuar" %>
+		</div>
+	<% end %>
+<% else %>
+	muestro la lista de entrenamientos
+	
+<% end %>
+
+
+
 menu desplegable para seleccionar nadador y luego un boton que redirecciona a la misma pagina y muestra todos los datos de ese nadador. Ademas aparece otro menu desplegable para filtrar por tipo de prueba
