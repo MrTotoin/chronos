@@ -39,7 +39,7 @@ class EntrenamientosController < ApplicationController
                
     end
     
-    def select
+    def seleccionar
         @entrenamiento = Entrenamiento.new #la necesita el form_for
         @nadadores = Nadador.find(:all, :order => "apellido")
         

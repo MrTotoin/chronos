@@ -1,0 +1,14 @@
+<h1>Seleccionar Nadador</h1>
+
+<%= form_for @entrenamiento, :url => {:controller => 'entrenamientos',:action => 'list'}  do |f| %>
+  <div class="field">
+    <%= f.label :nadador %><br />
+    <%= f.collection_select :nadador_id, @nadadores, :id,:nombre_completo %>	
+  </div>
+
+	<div class="actions">
+    <%= f.submit "continuar" %>
+  </div>
+<% end %>
+
+agregar collection_select para que cuando haga el query pueda filtrar por tipo de prueba

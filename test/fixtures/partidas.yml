@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  competencia_id: 1
+  partida_id: 1
+  nadador_id: 1
+  tipo_prueba: MyString
+  distancia: MyString
+  show_or_wait: false
+  andarivel: 1
+  puesto: 1
+  tiempo: 9.99
+
+two:
+  competencia_id: 1
+  partida_id: 1
+  nadador_id: 1
+  tipo_prueba: MyString
+  distancia: MyString
+  show_or_wait: false
+  andarivel: 1
+  puesto: 1
+  tiempo: 9.99

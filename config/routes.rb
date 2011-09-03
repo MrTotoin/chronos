@@ -1,26 +1,30 @@
 Chronos::Application.routes.draw do
-  resources :nadadors
-  resources :entrenamientos
-
+  
   root :to => 'paginas#home'
-
-  match '/nadadores_home' , :to => 'paginas#nadadores'
+  
+  match '/entrenamientos/seleccionar_nadador' => 'entrenamientos#seleccionar', :as => :seleccionar_nadador
+  match '/entrenamientos/list', :to => 'entrenamientos#list'
+  match '/nadadores_home',:to  => 'paginas#nadadores'
   match '/entrenamientos_home', :to => 'paginas#entrenamientos'
   match '/competencias', :to => 'paginas#competencias'
 #  match '/datos', :to => 'paginas#datos'
   match '/configuraciones', :to => 'paginas#configuraciones'
   match '/about', :to => 'paginas#about'
   
-  match 'select_nadador', :to => 'entrenamientos#select'
-#  match '/entrenamientos/select_nadador' => 'entrenamientos#select', :as => :select_nadador
- # match 'list', :to => 'entrenamientos#list'
-  match '/entrenamientos/list', :to => 'entrenamientos#list'
+  
+  resources :nadadors
+  resources :entrenamientos 
+  resources :competencias do
+    resources :partidas
+  end
 
-  # => para hacer andar el script de jQuery
-  # => se tiene que rootear el wait.js para 
-  # => que funcione correctamente la llamada
-  # => de la funcion getScript () (se llama en 
-  # => el archivo aplication.js )
+
+
+
+
+  # => para hacer andar el script de jQuery se tiene que rootear el wait.js para 
+  # => que funcione correctamente la llamada de la funcion getScript () (se llama en 
+  # => el view/entrenamientos/show.html.erb )
   match 'wait.js', :to => 'entrenamientos#wait'
   
   
