@@ -1,21 +1,22 @@
 Chronos::Application.routes.draw do
   
+
   root :to => 'paginas#home'
   
   match '/entrenamientos/seleccionar_nadador' => 'entrenamientos#seleccionar', :as => :seleccionar_nadador
   match '/entrenamientos/list', :to => 'entrenamientos#list'
+  
   match '/nadadores_home',:to  => 'paginas#nadadores'
   match '/entrenamientos_home', :to => 'paginas#entrenamientos'
-  match '/competencias', :to => 'paginas#competencias'
-#  match '/datos', :to => 'paginas#datos'
+  match '/competencias_home', :to => 'paginas#competencias'
   match '/configuraciones', :to => 'paginas#configuraciones'
   match '/about', :to => 'paginas#about'
   
   
-  resources :nadadors
   resources :entrenamientos 
+  resources :nadadors
   resources :competencias do
-    resources :partidas
+     resources :partidas
   end
 
 

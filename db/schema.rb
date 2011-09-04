@@ -12,17 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110903192548) do
 
-  create_table "borradors", :force => true do |t|
-    t.integer  "nadador_id"
-    t.string   "tipo_prueba"
-    t.decimal  "tiempo"
-    t.integer  "distancia"
-    t.boolean  "competencia"
-    t.boolean  "borrar"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "competencia", :force => true do |t|
     t.string   "nombre"
     t.date     "fecha"
@@ -43,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20110903192548) do
   create_table "nadadors", :force => true do |t|
     t.string   "nombre"
     t.string   "apellido"
-    t.string   "fecha_nacimiento"
+    t.date     "fecha_nacimiento"
     t.string   "club"
     t.string   "sexo"
     t.datetime "created_at"

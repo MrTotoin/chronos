@@ -11,11 +11,11 @@
   </div>
 	<div class="field">
     <%= f.label :sexo %><br />
-    <%= f.text_field :sexo %>
+	 <%= f.select :sexo, ['Femenino','Masculino'] %>	
   </div>
 	<div class="field">
     <%= f.label :fecha_nacimiento %><br />
-    <%= f.text_field :fecha_nacimiento %>
+	 <%= f.date_select :fecha_nacimiento, {:start_year => 1970, :end_year => 2011, :promt => true, :order => [:day, :month, :year]} %>	
   </div>
 	<div class="field">
     <%= f.label :club %><br />
