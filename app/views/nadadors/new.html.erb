@@ -1,27 +1,27 @@
 <h1>Nuevo nadador</h1>
 
 <%= form_for(@nadador) do |f| %>
-  <div class="field">
-    <%= f.label :nombre %><br />
-    <%= f.text_field :nombre %>
+	<div class="field">
+		<%= f.label :nombre %><br />
+		<%= f.text_field :nombre %>
+	</div>
+	<div class="field">
+		<%= f.label :apellido %><br />
+		<%= f.text_field :apellido %>
+	</div>
+	<div class="field">
+		<%= f.label :sexo %><br />
+		<%= f.select :sexo, ['Femenino','Masculino'] %>	
+	</div>
+	<div class="field">
+		<%= f.label :fecha_nacimiento %><br />
+		<%= f.date_select :fecha_nacimiento, {:start_year => 1970, :end_year => 2011, :promt => true, :order => [:day, :month, :year]} %>	
   </div>
 	<div class="field">
-    <%= f.label :apellido %><br />
-    <%= f.text_field :apellido %>
-  </div>
-	<div class="field">
-    <%= f.label :sexo %><br />
-	 <%= f.select :sexo, ['Femenino','Masculino'] %>	
-  </div>
-	<div class="field">
-    <%= f.label :fecha_nacimiento %><br />
-	 <%= f.date_select :fecha_nacimiento, {:start_year => 1970, :end_year => 2011, :promt => true, :order => [:day, :month, :year]} %>	
-  </div>
-	<div class="field">
-    <%= f.label :club %><br />
-    <%= f.text_field :club %>
+		<%= f.label :club %><br />
+		<%= f.text_field :club %>
   </div>
   <div class="actions">
-    <%= f.submit "Agregar" %>
+		<%= f.submit "Agregar" %>
   </div>
 <% end %>

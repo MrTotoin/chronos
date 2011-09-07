@@ -1,0 +1,22 @@
+<h1>Competencias</H1>
+	<table>
+		<tr>
+			<th>ID</th>	
+			<th>Nombre</th>
+			<th>Fecha</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<% @competencias.each do |competencia| %>
+		<tr>
+			<td> <%= competencia.id %> </td>
+			<td> <%= link_to competencia.nombre, competencia_path(competencia.id) %> </td>
+			<td> <%= competencia.fecha %> </td>
+			<td> <%= link_to 'editar', edit_competencia_path(competencia.id)  %> </td>
+			<td> <%= link_to 'borrar', '#'  %> </td>
+		</tr>
+		<% end %> 
+	</table>
+	
+	<br><br>
+Agregar metodo EDIT y cambiar link para borrar.

@@ -1,21 +1,19 @@
 <h1>COMPETENCIAS</h1>
 
 <ul>
-	<li> <%= link_to "Agregar competencia", new_competencia_path %> (selecciona nadadores por cada andarivel. Tambien selecciona tipo de prueba y distancia que es comun a todos) </li>
-	<li> <%= link_to "Partida rapida", '#' %> (no selecciona nadador, solo tipo de prueba y distancia. Los resultados se expresan por cada andarivel) </li>
-	<li> <%= link_to "Ver competencias", '#' %> (selecciona por evento y/o año y/o ...ver que mas y como hacerlo) </li>
+	<li> <%= link_to "Agregar competencia", new_competencia_path %>  </li>
+	<li> <%= link_to "Ver competencias", competencias_path %>  </li>
+	<li> <%= link_to "Partida rapida", '#' %> (no selecciona nadador, solo tipo de prueba y distancia. Los resultados se expresan por cada andarivel)</li>
+	<li> <%= link_to "Ver partidas rapidas", '#' %> (las partidas rapidas no corresponden a ninguna competencia) </li>
 </ul>
-
-
-
-
+<br><br><br>
 
 
 <p> 
-	<strong> Falta: <br>
-							-crear tabla Competencias <br>
-		 					-crear paginas <br>
-							-crear action(s) en el controlador <br>
-							-cambiar links <br>
+	<strong> 
+		Selecciona competencia (Ver resultados, agregar partida, programar partida, ejecutar partida)<br>
+		Agrega competencia <br>
+		Ver partidas rapidas <br>
+		
 	</strong>
 </p>

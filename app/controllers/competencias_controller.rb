@@ -19,4 +19,13 @@ class CompetenciasController < ApplicationController
      end
   end
   
+  def show
+      @competencia = Competencia.find(params[:id])
+      @partidas = @competencia.partidas
+  end
+  
+  def index
+    @competencias = Competencia.find(:all)
+  end
+  
 end

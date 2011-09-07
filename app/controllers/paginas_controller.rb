@@ -12,6 +12,7 @@ class PaginasController < ApplicationController
   
   def competencias
       @title = "Competencias"
+      @competencias = Competencia.find(:all)
   end
 
   def configuraciones

@@ -1,0 +1,31 @@
+<h1> <%= @competencia.nombre %> </h1> 
+<p><b> Fecha: </b> <%= @competencia.fecha %> <br><br>
+
+<% if @competencia.partidas.empty? == true %>
+	<b> No existen partidas para esta competencia </b>
+<% else %>
+	<h2> Partidas </h2>
+	<table>
+		<tr>
+			<th>Numero</th>	
+			<th>Mejor tiempo</th>	
+			<th></th>
+		</tr>
+		<% @partidas.each do |partida| %>
+		<tr>
+			<td> <%= partida.partida_id %> </td>
+			<td> <%= mejor_tiempo %> </td>
+			<td> <%= link_to 'Ver', '#'  %> </td>
+		</tr>
+		<% end %> 
+	</table>
+<% end %>
+
+
+
+
+
+		
+
+	
+	<br><br>

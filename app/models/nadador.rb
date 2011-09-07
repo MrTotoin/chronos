@@ -1,6 +1,6 @@
 class Nadador < ActiveRecord::Base
   attr_accessible :nombre, :apellido,:fecha_nacimiento, :club, :sexo
-  has_many :entrenamiento
+  has_many :entrenamientos
   
 #Agregar manejo de errores para la validacion en el metodo create del nadadors_controller 
 #  validates :nombre,  :presence => true
