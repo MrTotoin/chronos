@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110903192548) do
+ActiveRecord::Schema.define(:version => 20110907221103) do
 
   create_table "competencia", :force => true do |t|
     t.string   "nombre"
@@ -41,15 +41,26 @@ ActiveRecord::Schema.define(:version => 20110903192548) do
 
   create_table "partidas", :force => true do |t|
     t.integer  "competencia_id"
-    t.integer  "partida_id"
-    t.integer  "nadador_id"
+    t.boolean  "show_or_wait"
+    t.boolean  "partida_rapida"
     t.string   "tipo_prueba"
     t.string   "distancia"
-    t.boolean  "show_or_wait"
-    t.integer  "andarivel"
-    t.integer  "puesto"
-    t.decimal  "tiempo"
-    t.string   "comentarios"
+    t.integer  "nadador_id_1"
+    t.decimal  "tiempo_1"
+    t.integer  "nadador_id_2"
+    t.decimal  "tiempo_2"
+    t.integer  "nadador_id_3"
+    t.decimal  "tiempo_3"
+    t.integer  "nadador_id_4"
+    t.decimal  "tiempo_4"
+    t.integer  "nadador_id_5"
+    t.decimal  "tiempo_5"
+    t.integer  "nadador_id_6"
+    t.decimal  "tiempo_6"
+    t.integer  "nadador_id_7"
+    t.decimal  "tiempo_7"
+    t.integer  "nadador_id_8"
+    t.decimal  "tiempo_8"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

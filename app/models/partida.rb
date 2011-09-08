@@ -1,4 +1,4 @@
 class Partida < ActiveRecord::Base
-  attr_accessible :competencia_id, :partida_id, :nadador_id, :tipo_prueba, :distancia, :show_or_wait, :andarivel, :puesto, :tiempo, :comentarios
-  belongs_to :competencia
+    attr_accessible tiempo_1
+    belongs_to :competencia
 end

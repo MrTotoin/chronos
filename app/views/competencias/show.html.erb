@@ -12,14 +12,17 @@
 			<th></th>
 		</tr>
 		<% @partidas.each do |partida| %>
-		<tr>
-			<td> <%= partida.partida_id %> </td>
+		<tr>	<% @partida=partida %>
+			<td> <%= partida.id %> </td>
 			<td> <%= mejor_tiempo %> </td>
 			<td> <%= link_to 'Ver', '#'  %> </td>
 		</tr>
 		<% end %> 
 	</table>
 <% end %>
+<br>
+<%= link_to "Agregar partida", new_competencia_partida_path(@competencia,@partidas) %>
+
 
 
 

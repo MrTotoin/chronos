@@ -22,7 +22,6 @@ Chronos::Application.routes.draw do
 
 
 
-
   # => para hacer andar el script de jQuery se tiene que rootear el wait.js para 
   # => que funcione correctamente la llamada de la funcion getScript () (se llama en 
   # => el view/entrenamientos/show.html.erb )
