@@ -11,7 +11,7 @@ class NadadorsController < ApplicationController
         if @nadador.save  
           #flash[:success] = "Welcome to the Sample App!"
           @title = "Nadadores"
-          redirect_to new_nadador_path    
+          redirect_to nadadores_home_path     
          else
           @title = "FALLO AL GUARDAR"
           #

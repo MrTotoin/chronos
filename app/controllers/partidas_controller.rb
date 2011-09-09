@@ -1,5 +1,6 @@
 class PartidasController < ApplicationController
   def new
-    @cuack=2
+    @partida=Partida.new
+    @nadadores = Nadador.find(:all, :order => "apellido")
   end
 end

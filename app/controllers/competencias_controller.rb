@@ -22,6 +22,7 @@ class CompetenciasController < ApplicationController
   def show
       @competencia = Competencia.find(params[:id])
       @partidas = @competencia.partidas
+      @partida = Partida.new
   end
   
   def index
