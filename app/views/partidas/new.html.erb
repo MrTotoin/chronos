@@ -1,9 +1,15 @@
-<%= form_for(@partida) do |f| %>
+<h1> Partida nueva </h1>
+
+<!-- Para el form_for hay que usar si o si el hash :url porque sino tira error aunque teoricamente no hace falta. Despues de leer parece que es un bug porque seteo todo lo necesario para que funcione y no anda.El path que especifico es a donde se puede hacer POST segun "rake routes".-->
+<%= form_for [@competencia, @partida], :url => competencia_partidas_path(@competencia) do |f| %>
 	<div>
-		Tipo de prueba <%= f.select :tipo_prueba, ['Crawl','Pecho', 'Mariposa', 'Espalda', 'Combinados']%>	
-	</div>
+		<b> Tipo de prueba</b> <%= f.select :tipo_prueba, ['Crawl','Pecho', 'Mariposa', 'Espalda', 'Combinados']%>	
+	</div> <br>
 	<div class="field">
-		Carril 1 <%= f.collection_select :nadador_id_1, @nadadores, :id,:nombre_completo %>	
+		<b> Carril 1</b> <%= f.collection_select :nadador_id_1, @nadadores, :id,:nombre_completo %>	
+	</div>
+	<div class="actions">
+		<%= f.submit "Guardar" %>
 	</div>
 <% end %>
 

@@ -16,7 +16,7 @@ Chronos::Application.routes.draw do
   resources :entrenamientos 
   resources :nadadors
   resources :competencias do
-     resources :partidas
+    resources :partidas
   end
 
 
