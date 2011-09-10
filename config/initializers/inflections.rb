@@ -8,3 +8,8 @@
 #   inflect.irregular 'person', 'people'
 #   inflect.uncountable %w( fish sheep )
 # end
+
+#respuesta de stackoverflow
+#ActiveSupport::Inflector.inflections do |inflect|
+#  inflect.singular "competencia", "competencia"
+#end
