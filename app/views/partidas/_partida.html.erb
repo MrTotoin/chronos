@@ -1,14 +1,6 @@
-<h2> Partidas </h2>
-
-<table>
-	<tr>
-		<th>Numero</th>	
-	</tr>
-	<% @partidas.each do |partida| %>
-	<tr>
-		<td> <%= partida.partida_id %> </td>
-	</tr>
-	<% end %> 
-</table>
-
-<br><br>
+<tr>	<% @partida=partida %>
+	<td> <%= partida.id %> </td>
+	<td> <%=  mejor_tiempo %> </td>
+	<td> <%= link_to 'Ver', competencia_partida_path(@competencia, @partida)  %> </td>
+	<td> <%= link_to 'Borrar', competencia_partida_path(@competencia, @partida), :confirm => 'Esta a punto de borrar una partida, ¿desea continuar?', :method => :delete%> </td>
+</tr>

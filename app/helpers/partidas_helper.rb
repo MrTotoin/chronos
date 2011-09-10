@@ -27,4 +27,8 @@ def mejor_tiempo
   return @tiempo
 end
 
+def nadadores_partida
+  nadadores@partida.nadador_id_1
+end
+
 end
