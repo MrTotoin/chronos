@@ -13,7 +13,7 @@
 			<td> <%= nadador.nombre %> </td>
 			<td> <%= nadador.apellido %> </td>
 			<td> <%= nadador.sexo %> </td>
-			<td> <%= nadador.fecha_nacimiento %> </td>
+			<td> <%= nadador.fecha_nacimiento.strftime("%d/%m/%Y") %> </td>
 			<td> <%= nadador.club %> </td>
 			<td> <%= link_to 'editar', edit_nadador_path(nadador.id) %> </td>
 			<td> <%= link_to 'borrar', nadador, :confirm => 'Esta a punto de borrar un nadador, ¿desea continuar?', :method => :delete %> </td>

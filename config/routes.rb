@@ -26,6 +26,7 @@ Chronos::Application.routes.draw do
   # => que funcione correctamente la llamada de la funcion getScript () (se llama en 
   # => el view/entrenamientos/show.html.erb )
   match 'wait.js', :to => 'entrenamientos#wait'
+  match 'wait_partida.js', :to => 'partidas#wait'
   
   
   

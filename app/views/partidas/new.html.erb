@@ -25,7 +25,7 @@
 		<b> Carril 7</b> <%= f.collection_select :nadador_id_7, @nadadores, :id,:nombre_completo %>	</div>
 	<div class="field">
 		<b> Carril 8</b> <%= f.collection_select :nadador_id_8, @nadadores, :id,:nombre_completo %>	</div>
-	<% @partida.partida_rapida=false %>
+	<% @partida.partida_rapida = false %>
 	<div class="actions">
 		<%= f.submit "Guardar" %>
 	</div>

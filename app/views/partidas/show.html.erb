@@ -1,9 +1,27 @@
-<% nadadores_partida %>
-Carril 1 <%=  %> <br>
-Carril 2 <%= %>  <br>
-Carril 3 <%= %>  <br>
-Carril 4 <%= %>  <br>
-Carril 5 <%= %>  <br>
-Carril 6 <%= %>  <br>
-Carril 7 <%= %>  <br>
-Carril 8 <%= %>  <br>
+<% content_for :head do %>
+	<% javascript_tag do %>
+		$(function () {  
+	      setTimeout(refresca_estado, 1000);  
+	  		});  
+
+		function refresca_estado() {  
+	  		var partida_id = $('#div_tiempo').attr('data-id')	
+	  		$.getScript('/wait_partida.js?partida_id=' + partida_id);  
+	  		setTimeout(refresca_estado, 1000);  
+			};
+	<% end %>
+<% end %>
+
+<h1>Partida <%= @partida.id %> </h1>
+
+<% if @partida.show_or_wait ==false %>
+	<div id="div_tiempo" data-id="<%= @partida.id %>" >
+		<!-- El scrypt actualiza TODA LA TABLA en lugar de solo un campo -->
+		<%= render '/partidas/tiempos'%>
+	</div>
+<% else %> 
+	<%= render '/partidas/tiempos'%>
+<% end %>
+
+<br><br>
+Falta agregar un boton para guardar la partida una vez terminada la misma o para borrarla de la base de datos (hay que crear un campo que se llame borrar en la base de datos). Tambien falta crear metodo para mostrar el puesto o agregar 8 columnas mas en la base de datos y leer el valor desde ahi.
