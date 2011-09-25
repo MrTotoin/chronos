@@ -5,54 +5,71 @@
 		<th> Puesto </th>
 		<th> Tiempo </th>
 	</tr>
-	<tr>
-		<% @nadador = Nadador.find(@partida.nadador_id_1) %>
-		<td> 1 </td> 
-		<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-		<td> CREAR METODO </td>
-		<td> <%= print_tiempo(@partida.tiempo_1) %> </td>
-	</tr>
-	<tr> 
-		<% @nadador = Nadador.find(@partida.nadador_id_2) %>
-		<td> 2 </td> 
-		<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-		<td> CREAR METODO </td>
-		<td> <%= print_tiempo(@partida.tiempo_2) %> </td>
-	</tr>
-	<tr> <% @nadador = Nadador.find(@partida.nadador_id_3) %>
-		<td> 3 </td> 
-		<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-		<td> CREAR METODO </td>
-		<td> <%= print_tiempo(@partida.tiempo_3) %> </td>
-	</tr>
-	<tr> <% @nadador = Nadador.find(@partida.nadador_id_4) %>
-		<td> 4 </td> 
-		<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-		<td> CREAR METODO </td>
-		<td> <%= print_tiempo(@partida.tiempo_4) %> </td>
-	</tr>
-	<tr> <% @nadador = Nadador.find(@partida.nadador_id_5) %>
-		<td> 5 </td> 
-		<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-		<td> CREAR METODO </td>
-		<td> <%= print_tiempo(@partida.tiempo_5) %> </td>
-	</tr>
-	<tr> <% @nadador = Nadador.find(@partida.nadador_id_6) %>
-		<td> 6 </td> 
-		<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-		<td> CREAR METODO </td>
-		<td> <%= print_tiempo(@partida.tiempo_6) %> </td>
-	</tr>
-	<tr> <% @nadador = Nadador.find(@partida.nadador_id_7) %>
-		<td> 7 </td> 
-		<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-		<td> CREAR METODO </td>
-		<td> <%= print_tiempo(@partida.tiempo_7) %> </td>
-	</tr>
-	<tr> <% @nadador = Nadador.find(@partida.nadador_id_8) %>
-		<td> 8 </td> 
-		<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-		<td> CREAR METODO </td>
-		<td> <%= print_tiempo(@partida.tiempo_8) %> </td>
-	</tr>
+
+	<% if @partida.nadador_id_1 != nil %>
+		<tr>
+			<% @nadador = Nadador.find(@partida.nadador_id_1) %>
+			<td> 1 </td> 
+			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
+			<td> CREAR METODO </td>
+			<td> <%= print_tiempo(@partida.tiempo_1) %> </td>
+		</tr>
+	<% end %>
+	<% if @partida.nadador_id_2!=nil %>
+		<tr> 
+			<% @nadador = Nadador.find(@partida.nadador_id_2) %>
+			<td> 2 </td> 
+			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
+			<td> CREAR METODO </td>
+			<td> <%= print_tiempo(@partida.tiempo_2) %> </td>
+		</tr>
+	<% end %>
+	<% if @partida.nadador_id_3!=nil %>
+		<tr> <% @nadador = Nadador.find(@partida.nadador_id_3) %>
+			<td> 3 </td> 
+			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
+			<td> CREAR METODO </td>
+			<td> <%= print_tiempo(@partida.tiempo_3) %> </td>
+		</tr>
+	<% end %>
+	<% if @partida.nadador_id_4!=nil %>
+		<tr> <% @nadador = Nadador.find(@partida.nadador_id_4) %>
+			<td> 4 </td> 
+			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
+			<td> CREAR METODO </td>
+			<td> <%= print_tiempo(@partida.tiempo_4) %> </td>
+		</tr>
+	<% end %>
+	<% if @partida.nadador_id_5!=nil %>
+		<tr> <% @nadador = Nadador.find(@partida.nadador_id_5) %>
+			<td> 5 </td> 
+			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
+			<td> CREAR METODO </td>
+			<td> <%= print_tiempo(@partida.tiempo_5) %> </td>
+		</tr>
+	<% end %>
+	<% if @partida.nadador_id_6!=nil %>
+		<tr> <% @nadador = Nadador.find(@partida.nadador_id_6) %>
+			<td> 6 </td> 
+			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
+			<td> CREAR METODO </td>
+			<td> <%= print_tiempo(@partida.tiempo_6) %> </td>
+		</tr>
+	<% end %>
+	<% if @partida.nadador_id_7!=nil %>
+		<tr> <% @nadador = Nadador.find(@partida.nadador_id_7) %>
+			<td> 7 </td> 
+			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
+			<td> CREAR METODO </td>
+			<td> <%= print_tiempo(@partida.tiempo_7) %> </td>
+		</tr>
+	<% end %>
+	<% if @partida.nadador_id_8!=nil %>
+		<tr> <% @nadador = Nadador.find(@partida.nadador_id_8) %>
+			<td> 8 </td> 
+			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
+			<td> CREAR METODO </td>
+			<td> <%= print_tiempo(@partida.tiempo_8) %> </td>
+		</tr>
+	<% end %>
 </table>

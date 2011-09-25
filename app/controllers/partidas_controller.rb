@@ -32,12 +32,20 @@ class PartidasController < ApplicationController
   
   def show
     @partida = Partida.find(params[:id])
-    
+    @competencia = @partida.competencia
   end
   
   def wait
-    @partida = Partida.find(params[:partida_id])
+      @partida = Partida.find(params[:partida_id])
+      @competencia = @partida.competencia
+  end
+  
+  def update
+    @partida = Partida.find(params[:id])
+    @partida.show_or_wait=true
+    @partida.save
     @competencia = @partida.competencia
+    redirect_to competencia_path(@competencia)
   end
 
 /  def tiempo_a_0

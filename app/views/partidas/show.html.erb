@@ -23,5 +23,8 @@
 	<%= render '/partidas/tiempos'%>
 <% end %>
 
+<%= button_to 'Descartar', competencia_partida_path(@competencia, @partida), :method => :delete, :confirm =>'Esta a punto de borrar una partida, ¿desea continuar?' %>
+
+<%= button_to 'Guardar Partida', competencia_partida_path(@competencia, @partida), :method =>:put %>
 <br><br>
 Falta agregar un boton para guardar la partida una vez terminada la misma o para borrarla de la base de datos (hay que crear un campo que se llame borrar en la base de datos). Tambien falta crear metodo para mostrar el puesto o agregar 8 columnas mas en la base de datos y leer el valor desde ahi.
