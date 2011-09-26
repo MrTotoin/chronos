@@ -45,8 +45,13 @@ al metodo wait del entrenamientos controller.  -->
 <% end %>
 
 <br>
+<div style="float:left; with:50%; height:100px; margin-left:100px; ">
+	<%= button_to 'Guardar Entrenamiento', @entrenamiento, :method =>:put %>
+</div>
+<div style="float:right; with:50%; height:100px; margin-right:100px;">
+	<%= button_to 'Descartar Entrenamiento', @entrenamiento, :method => :delete, :confirm =>'Esta a punto de borrar un entrenamiento, ¿desea continuar?' %>
+</div>
 <br>
-
-Agregar boton para guardar el entrenamiento o descartarlo <br>
+Todavia no andan los botones. 
 
 

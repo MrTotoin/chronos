@@ -57,4 +57,12 @@ class EntrenamientosController < ApplicationController
         redirect_to list_path
     end
     
+    #este metodo es llamado por el button_to de la vista show porque usa el metodo PUT
+    def update
+      @entrenmamiento = Entrenamiento.find(params[:id])
+      @entrenamiento.show_or_wait=true
+      @entrenamiento.save
+      redirect_to entrenamientos_home
+    end
+    
 end

@@ -95,3 +95,5 @@ div.field, div.actions {
   margin-bottom: 10px;
 }
 
+/*este codigo todavia no anda. Deberia poner los botones de /partidas/show.html.erb en la misma fila. Por defecto rails los tira uno abajo del otro*/
+.botones { display:inline; margin-right:10px; }

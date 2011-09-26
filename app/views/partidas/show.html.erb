@@ -1,5 +1,5 @@
 <% content_for :head do %>
-	<% javascript_tag do %>
+	<%= javascript_tag do %>
 		$(function () {  
 	      setTimeout(refresca_estado, 1000);  
 	  		});  
@@ -23,8 +23,11 @@
 	<%= render '/partidas/tiempos'%>
 <% end %>
 
-<%= button_to 'Descartar', competencia_partida_path(@competencia, @partida), :method => :delete, :confirm =>'Esta a punto de borrar una partida, ¿desea continuar?' %>
+<div style="float:left; with:50%; height:50px; margin-right:100px; ">
+	<%= button_to 'Guardar Partida', competencia_partida_path(@competencia, @partida), :method =>:put %>
+</div>
+<div style="float:right; with:50%; height:50px; margin-right:100px; ">
+	<%= button_to 'Descartar Partida', competencia_partida_path(@competencia, @partida), :method => :delete, :confirm =>'Esta a punto de borrar una partida, ¿desea continuar?' %>
+</div>
 
-<%= button_to 'Guardar Partida', competencia_partida_path(@competencia, @partida), :method =>:put %>
-<br><br>
-Falta agregar un boton para guardar la partida una vez terminada la misma o para borrarla de la base de datos (hay que crear un campo que se llame borrar en la base de datos). Tambien falta crear metodo para mostrar el puesto o agregar 8 columnas mas en la base de datos y leer el valor desde ahi.
+

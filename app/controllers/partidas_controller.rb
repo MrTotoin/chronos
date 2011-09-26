@@ -40,6 +40,7 @@ class PartidasController < ApplicationController
       @competencia = @partida.competencia
   end
   
+  #este metodo es llamado por el button_to de la vista show porque usa el metodo PUT
   def update
     @partida = Partida.find(params[:id])
     @partida.show_or_wait=true
