@@ -1,9 +1,10 @@
 <h1> Chronos </h1> 
 Sistema de adquisicion de tiempos en natatorios.
 <br> <br> <br>
-<p><strong>
-	Debe haber 3 botones muy anchos: </strong> <br>
-		-Entrenamientos <br>
-		-Competencias<br>
-		-Nadadores<br>
-		que redirijan al home de cada categoria </p>
+
+		<% logo_entrenamientos = image_tag("entrenamientos.png", :alt => "Entrenamientos!!", :class => "round") %>
+		<%= link_to logo_entrenamientos, entrenamientos_home_path %>
+		<% logo_competencias = image_tag("competencias.png", :alt => "Comptencias!!", :class => "round") %>
+		<%= link_to logo_competencias, competencias_home_path %>
+		<% logo_nadadores = image_tag("nadadores.png", :alt => "Nadadores!!", :class => "round") %>
+		<%= link_to logo_nadadores, nadadores_home_path %>
