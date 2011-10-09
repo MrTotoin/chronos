@@ -29,4 +29,26 @@ class CompetenciasController < ApplicationController
     @competencias = Competencia.find(:all)
   end
   
+   
+  def edit
+    @competencia = Competencia.find(params[:id])
+    @title = "Editar competencia"
+  end
+  
+  def update
+      @competencia = Competencia.find(params[:id])
+      if @competencia.update_attributes(params[:competencia])
+        redirect_to competencia_path(@competencia)
+      else
+        @title = "Edit user"
+        render 'edit'
+      end
+  end
+  
+  def destroy
+    @competencia = Competencia.find(params[:id])
+    @competencia.destroy
+    redirect_to competencias_path
+  end
+  
 end
