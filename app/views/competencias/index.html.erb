@@ -12,7 +12,7 @@
 		<tr>
 			<td> <%= competencia.id %> </td>
 			<td> <%= link_to competencia.nombre, competencia_path(competencia.id) %> </td>
-			<td> <%= competencia.fecha %> </td>
+			<td> <%= competencia.fecha.strftime("%d/%m/%Y") %> </td>
 			<td> <%= link_to 'editar', edit_competencia_path(competencia.id)  %> </td>
 			<td> <%= link_to 'borrar', competencia_path(competencia), :confirm => 'Esta a punto de borrar una competencia, ¿desea continuar?', :method => :delete %> </td>			
 		</tr>

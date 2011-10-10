@@ -9,7 +9,7 @@ class CompetenciasController < ApplicationController
     if @competencia.save  
       #flash[:success] = "Welcome to the Sample App!"
       @title = "Nadadores"
-      redirect_to '/competencias_home'    
+      redirect_to competencia_path(@competencia)   
      else
       @title = "FALLO AL GUARDAR"
       #

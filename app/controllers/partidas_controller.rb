@@ -36,6 +36,8 @@ class PartidasController < ApplicationController
   end
   
   def wait
+     / mi_archivo = 'buffer_Rx'
+      fp = File.open( mi_archivo , 'w+' )/
       @partida = Partida.find(params[:partida_id])
       @competencia = @partida.competencia
   end
