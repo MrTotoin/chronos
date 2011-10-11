@@ -19,7 +19,6 @@ class EntrenamientosController < ApplicationController
             @title = "FALLO AL GUARDAR"
             redirect_to entrenamientos_home_path
         end
-       
     end
     
     def show
@@ -35,18 +34,17 @@ class EntrenamientosController < ApplicationController
         #  @comments = Comment.where("article_id = ? and created_at > ?", params[:article_id], Time.at(params[:after].to_i))  
         # => :article_id y :after vienen de => public/javascripts/aplication.js
         # aca puedo usar render porque ya tengo el dato de la base de datos y el metodo show ya fue llamado, entonces show.html.erb ya fue cargado.
-        #render :partial => @entrenamiento      # => la vista /entrenamientos/_entrenamiento.html.erb
-               
+        # render :partial => @entrenamiento
+        # => la vista /entrenamientos/_entrenamiento.html.erb
     end
     
     def seleccionar
         @entrenamiento = Entrenamiento.new #la necesita el form_for
         @nadadores = Nadador.find(:all, :order => "apellido")
-        
     end
     
     def list
-        # vengo de la vista select.html.erb
+        # vengo de la vista seleccionar.html.erb
         @entrenamientos = Entrenamiento.find(:all, :conditions => ["nadador_id = ?", params[:entrenamiento][:nadador_id]])
         @nadador = Nadador.find(params[:entrenamiento][:nadador_id])
     end
@@ -54,15 +52,17 @@ class EntrenamientosController < ApplicationController
     def destroy
         @entrenamiento = Entrenamiento.find(params[:id])
         @entrenamiento.destroy
-        redirect_to list_path
+        flash[:error] = "Entrenamiento borrado!"
+        redirect_to entrenamientos_home_path
     end
     
     #este metodo es llamado por el button_to de la vista show porque usa el metodo PUT
     def update
-      @entrenmamiento = Entrenamiento.find(params[:id])
+      @entrenamiento = Entrenamiento.find(params[:id])
       @entrenamiento.show_or_wait=true
       @entrenamiento.save
-      redirect_to entrenamientos_home
+      flash[:success] = "Entrenamiento guardado!"
+      redirect_to entrenamientos_home_path
     end
     
 end

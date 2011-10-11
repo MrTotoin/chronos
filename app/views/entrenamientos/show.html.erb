@@ -3,20 +3,21 @@ El mismo llama al script wait.js.erb cada 1 segundo y le pasa
 los datos de la div que muestra el tiempo para poder hacer un query a
 la base de datos. Cuando se llama al wait.js automaticamente se llama 
 al metodo wait del entrenamientos controller.  -->
-<% content_for :head do %>
-	<% javascript_tag do %>
-		$(function () {  
-	      setTimeout(refresca_estado, 1000);  
-	  		});  
+<% if @entrenamiento.show_or_wait == false %>
+	<% content_for :head do %>
+		<% javascript_tag do %>
+			$(function () {  
+		      setTimeout(refresca_estado, 1000);  
+		  		});  
 
-		function refresca_estado() {  
-	  		var entrenamiento_id = $('#div_tiempo').attr('data-id')	
-	  		$.getScript('/wait.js?entrenamiento_id=' + entrenamiento_id);  
-	  		setTimeout(refresca_estado, 1000);  
-			};
+			function refresca_estado() {  
+		  		var entrenamiento_id = $('#div_tiempo').attr('data-id')	
+		  		$.getScript('/wait.js?entrenamiento_id=' + entrenamiento_id);  
+		  		setTimeout(refresca_estado, 1000);  
+				};
+		<% end %>
 	<% end %>
 <% end %>
-
 
 	<!-- Header1: Apellido, Nombre del nadador en cuestion-->
 	<h1> 
@@ -30,28 +31,28 @@ al metodo wait del entrenamientos controller.  -->
 	<!-- Inserta el estado o el tiempo segun corresponda mediante la 
 		 lectura del campo show_or_wait. Y el div se refresca automaticamente
 		 cada 1 segundo.  -->
-<% if @entrenamiento.show_or_wait == false %>
 		<div id="div_tiempo" data-id="<%= @entrenamiento.id %>" >
 		<!-- 	esta div se refresca con el partial _entrenamiento.js.erb que es 
 				llamado por el wait.js.erb cuando se llama al metodo wait del
 				entrenamientos controller. Se le pasan datos dentro de la 
 				etiqueta que abre el DIV.  -->
 			<b> Tiempo:</b><%= @entrenamiento.tiempo %>	<br>
+			
 		</div>
-		
-<% else %>
-		<div id="div_tiempo/estado" data-id="<%= @entrenamiento.id %>" >
-		</div>
-<% end %>
+		<% if @entrenamiento.show_or_wait == false %>
+			<b> Estado: </b> nadando <br>
+		<% else %>
+			<b> Estado: </b> prueba terminada <br>
+		<% end %>
+
 
 <br>
 <div style="float:left; with:50%; height:100px; margin-left:100px; ">
-	<%= button_to 'Guardar Entrenamiento', @entrenamiento, :method =>:put %>
+	<%= button_to 'Guardar Entrenamiento', entrenamiento_path(@entrenamiento), :method =>:put %>
 </div>
 <div style="float:right; with:50%; height:100px; margin-right:100px;">
-	<%= button_to 'Descartar Entrenamiento', @entrenamiento, :method => :delete, :confirm =>'Esta a punto de borrar un entrenamiento, ¿desea continuar?' %>
+	<%= button_to 'Descartar Entrenamiento',entrenamiento_path(@entrenamiento), :method => :delete, :confirm =>'Esta a punto de borrar un entrenamiento, ¿desea continuar?' %>
 </div>
 <br>
-Todavia no andan los botones. 
 
 

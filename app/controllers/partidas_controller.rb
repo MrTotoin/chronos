@@ -27,6 +27,7 @@ class PartidasController < ApplicationController
     @partida = Partida.find(params[:id])
     @competencia = @partida.competencia
     @partida.destroy
+    flash[:error] = "Partida borrada!"
     redirect_to competencia_path(@competencia)
   end
   
@@ -48,6 +49,7 @@ class PartidasController < ApplicationController
     @partida.show_or_wait=true
     @partida.save
     @competencia = @partida.competencia
+    flash[:success] = "Partida guardada!"
     redirect_to competencia_path(@competencia)
   end
 
