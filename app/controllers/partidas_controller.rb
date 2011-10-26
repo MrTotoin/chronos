@@ -27,7 +27,7 @@ class PartidasController < ApplicationController
     @partida = Partida.find(params[:id])
     @competencia = @partida.competencia
     @partida.destroy
-    flash[:error] = "Partida borrada!"
+    flash[:error] = "Partida borrada"
     redirect_to competencia_path(@competencia)
   end
   
@@ -37,10 +37,25 @@ class PartidasController < ApplicationController
   end
   
   def wait
-     / mi_archivo = 'buffer_Rx'
-      fp = File.open( mi_archivo , 'w+' )/
       @partida = Partida.find(params[:partida_id])
       @competencia = @partida.competencia
+      mi_archivo = 'buffer_Rx'
+      fh = File.open( mi_archivo , 'r' )
+      #leo linea 1 (STATUS)
+      @status=fh.readline
+      if @status =~ /ADQUIRIENDO/ then 
+        #refresco DB (tiempos)
+        puts "--ADQUIRIENDO--" 
+      elsif @status =~ /PARTIDA FALSA/ then 
+        #refresco DB (reseteo tiempos)
+        puts "--PARTIDA FALSA--"
+      elsif @status =~ /FINALIZADO/ then 
+        #refresco DB (tiempos y show_or_wait)
+        puts "--FINALIZADO--" 
+      end 
+      
+      fh.rewind
+      fh.close
   end
   
   #este metodo es llamado por el button_to de la vista show porque usa el metodo PUT
@@ -49,7 +64,7 @@ class PartidasController < ApplicationController
     @partida.show_or_wait=true
     @partida.save
     @competencia = @partida.competencia
-    flash[:success] = "Partida guardada!"
+    flash[:success] = "Partida guardada"
     redirect_to competencia_path(@competencia)
   end
 
