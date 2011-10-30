@@ -12,6 +12,17 @@
 
 ActiveRecord::Schema.define(:version => 20111026043223) do
 
+  create_table "borradors", :force => true do |t|
+    t.integer  "nadador_id"
+    t.string   "tipo_prueba"
+    t.decimal  "tiempo"
+    t.integer  "distancia"
+    t.boolean  "competencia"
+    t.boolean  "borrar"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "competencia", :force => true do |t|
     t.string   "nombre"
     t.date     "fecha"

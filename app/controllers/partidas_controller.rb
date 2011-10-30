@@ -64,13 +64,54 @@ class PartidasController < ApplicationController
         @partida.tiempo_7 = @tiempo7
         @partida.tiempo_8 = @tiempo8
         #GUARDO en base de datos usando la variable de registro
-        @partidas.save
+        @partida.save
         puts "--ADQUIRIENDO--" 
       elsif @status =~ /PARTIDA FALSA/ then 
         #refresco DB (reseteo tiempos)
+        #LEO tiempos de archivo
+        @tiempo1 = fh.readline
+        @tiempo2 = fh.readline
+        @tiempo3 = fh.readline
+        @tiempo4 = fh.readline
+        @tiempo5 = fh.readline
+        @tiempo6 = fh.readline
+        @tiempo7 = fh.readline
+        @tiempo8 = fh.readline
+        #ESCRIBO variable del registro
+        @partida.tiempo_1 = @tiempo1
+        @partida.tiempo_2 = @tiempo2
+        @partida.tiempo_3 = @tiempo3
+        @partida.tiempo_4 = @tiempo4
+        @partida.tiempo_5 = @tiempo5
+        @partida.tiempo_6 = @tiempo6
+        @partida.tiempo_7 = @tiempo7
+        @partida.tiempo_8 = @tiempo8
+        #GUARDO en base de datos usando la variable de registro
+        @partida.save
         puts "--PARTIDA FALSA--"
       elsif @status =~ /FINALIZADO/ then 
         #refresco DB (tiempos y show_or_wait)
+        #LEO tiempos de archivo
+        @tiempo1 = fh.readline
+        @tiempo2 = fh.readline
+        @tiempo3 = fh.readline
+        @tiempo4 = fh.readline
+        @tiempo5 = fh.readline
+        @tiempo6 = fh.readline
+        @tiempo7 = fh.readline
+        @tiempo8 = fh.readline
+        #ESCRIBO variable del registro
+        @partida.tiempo_1 = @tiempo1
+        @partida.tiempo_2 = @tiempo2
+        @partida.tiempo_3 = @tiempo3
+        @partida.tiempo_4 = @tiempo4
+        @partida.tiempo_5 = @tiempo5
+        @partida.tiempo_6 = @tiempo6
+        @partida.tiempo_7 = @tiempo7
+        @partida.tiempo_8 = @tiempo8
+        #GUARDO en base de datos usando la variable de registro
+        @partida.show_or_wait=true
+        @partida.save
         puts "--FINALIZADO--" 
       end 
       
