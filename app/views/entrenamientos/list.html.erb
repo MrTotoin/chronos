@@ -1,4 +1,6 @@
-<h1>Entrenamientos de <%= @nadador.nombre %> <%= @nadador.apellido %></H1>
+<h1>Entrenamientos de <%= @nadador.nombre %> <%= @nadador.apellido %></h1>
+	
+	<% if @entrenamientos.count != 0 %>
 	<table>
 		<tr>
 			<th>EntrenamientoID</th>	
@@ -22,3 +24,6 @@
 		</tr>
 		<% end %> 
 	</table>
+	<% else %>
+		No existen entrenamientos registrados
+	<% end%>
