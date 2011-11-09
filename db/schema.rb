@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111026043223) do
+ActiveRecord::Schema.define(:version => 20110907221103) do
 
   create_table "borradors", :force => true do |t|
     t.integer  "nadador_id"
@@ -57,21 +57,21 @@ ActiveRecord::Schema.define(:version => 20111026043223) do
     t.string   "tipo_prueba"
     t.string   "distancia"
     t.integer  "nadador_id_1"
-    t.string   "tiempo_1"
+    t.decimal  "tiempo_1"
     t.integer  "nadador_id_2"
-    t.string   "tiempo_2"
+    t.decimal  "tiempo_2"
     t.integer  "nadador_id_3"
-    t.string   "tiempo_3"
+    t.decimal  "tiempo_3"
     t.integer  "nadador_id_4"
-    t.string   "tiempo_4"
+    t.decimal  "tiempo_4"
     t.integer  "nadador_id_5"
-    t.string   "tiempo_5"
+    t.decimal  "tiempo_5"
     t.integer  "nadador_id_6"
-    t.string   "tiempo_6"
+    t.decimal  "tiempo_6"
     t.integer  "nadador_id_7"
-    t.string   "tiempo_7"
+    t.decimal  "tiempo_7"
     t.integer  "nadador_id_8"
-    t.string   "tiempo_8"
+    t.decimal  "tiempo_8"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

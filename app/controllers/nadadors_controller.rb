@@ -40,7 +40,7 @@ class NadadorsController < ApplicationController
           @nadador = Nadador.find(params[:id])
           if @nadador.update_attributes(params[:nadador])
             #flash[:success] = "Profile updated."
-            redirect_to @nadador
+            redirect_to nadadors_path
           else
             @title = "Edit user"
             render 'edit'

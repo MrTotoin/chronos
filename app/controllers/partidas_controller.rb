@@ -46,14 +46,15 @@ class PartidasController < ApplicationController
       if @status =~ /ADQUIRIENDO/ then 
         #refresco DB (tiempos)
         #LEO tiempos de archivo
-        @tiempo1 = fh.readline
-        @tiempo2 = fh.readline
-        @tiempo3 = fh.readline
-        @tiempo4 = fh.readline
-        @tiempo5 = fh.readline
-        @tiempo6 = fh.readline
-        @tiempo7 = fh.readline
-        @tiempo8 = fh.readline
+        @estado="ADQUIRIENDO..."
+        @tiempo1 = fh.readline.to_f
+        @tiempo2 = fh.readline.to_f
+        @tiempo3 = fh.readline.to_f
+        @tiempo4 = fh.readline.to_f
+        @tiempo5 = fh.readline.to_f
+        @tiempo6 = fh.readline.to_f
+        @tiempo7 = fh.readline.to_f
+        @tiempo8 = fh.readline.to_f
         #ESCRIBO variable del registro
         @partida.tiempo_1 = @tiempo1
         @partida.tiempo_2 = @tiempo2
@@ -69,14 +70,15 @@ class PartidasController < ApplicationController
       elsif @status =~ /PARTIDA FALSA/ then 
         #refresco DB (reseteo tiempos)
         #LEO tiempos de archivo
-        @tiempo1 = fh.readline
-        @tiempo2 = fh.readline
-        @tiempo3 = fh.readline
-        @tiempo4 = fh.readline
-        @tiempo5 = fh.readline
-        @tiempo6 = fh.readline
-        @tiempo7 = fh.readline
-        @tiempo8 = fh.readline
+        @estado="PARTIDA EN FALSO"
+        @tiempo1 = fh.readline.to_f
+        @tiempo2 = fh.readline.to_f
+        @tiempo3 = fh.readline.to_f
+        @tiempo4 = fh.readline.to_f
+        @tiempo5 = fh.readline.to_f
+        @tiempo6 = fh.readline.to_f
+        @tiempo7 = fh.readline.to_f
+        @tiempo8 = fh.readline.to_f
         #ESCRIBO variable del registro
         @partida.tiempo_1 = @tiempo1
         @partida.tiempo_2 = @tiempo2
@@ -92,14 +94,15 @@ class PartidasController < ApplicationController
       elsif @status =~ /FINALIZADO/ then 
         #refresco DB (tiempos y show_or_wait)
         #LEO tiempos de archivo
-        @tiempo1 = fh.readline
-        @tiempo2 = fh.readline
-        @tiempo3 = fh.readline
-        @tiempo4 = fh.readline
-        @tiempo5 = fh.readline
-        @tiempo6 = fh.readline
-        @tiempo7 = fh.readline
-        @tiempo8 = fh.readline
+        @estado="FINALIZADO"
+        @tiempo1 = fh.readline.to_f
+        @tiempo2 = fh.readline.to_f
+        @tiempo3 = fh.readline.to_f
+        @tiempo4 = fh.readline.to_f
+        @tiempo5 = fh.readline.to_f
+        @tiempo6 = fh.readline.to_f
+        @tiempo7 = fh.readline.to_f
+        @tiempo8 = fh.readline.to_f
         #ESCRIBO variable del registro
         @partida.tiempo_1 = @tiempo1
         @partida.tiempo_2 = @tiempo2
