@@ -19,9 +19,9 @@ module ApplicationHelper
       @sec = @sec-(@min*60)
       return "#{@min} : #{@sec} : #{@ms}"
     else
-      return "#{@sec} : #{@ms}"
+      return "0 : #{@sec} : #{@ms}"
     end  
   end
   
-  
+    
 end

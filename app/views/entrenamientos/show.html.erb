@@ -25,8 +25,7 @@ al metodo wait del entrenamientos controller.  -->
 		<%= Nadador.find(@entrenamiento.nadador_id).nombre %>
 	</h1>
 
-	<b>	Tipo de prueba:</b> <%= @entrenamiento.tipo_prueba %> <br>
-	<b>	Distancia:</b>			<%= @entrenamiento.distancia %> metros <br>
+	
 
 	<!-- Inserta el estado o el tiempo segun corresponda mediante la 
 		 lectura del campo show_or_wait. Y el div se refresca automaticamente
@@ -36,14 +35,14 @@ al metodo wait del entrenamientos controller.  -->
 				llamado por el wait.js.erb cuando se llama al metodo wait del
 				entrenamientos controller. Se le pasan datos dentro de la 
 				etiqueta que abre el DIV.  -->
-			<b> Tiempo:</b><%= @entrenamiento.tiempo %>	<br>
+				
+				<b>Estado de la unidad central: </b><%= @estado %>               <br>
+				<b>	Tipo de prueba:</b> <%= @entrenamiento.tipo_prueba %>      <br>
+				<b>	Distancia:</b>	 	  <%= @entrenamiento.distancia %> metros <br>
+				<b> Tiempo: </b>			  <%= print_tiempo(@entrenamiento.tiempo) %>	        <br>
 			
 		</div>
-		<% if @entrenamiento.show_or_wait == false %>
-			<b> Estado: </b> nadando <br>
-		<% else %>
-			<b> Estado: </b> prueba terminada <br>
-		<% end %>
+	
 
 
 <br>

@@ -36,6 +36,38 @@ class EntrenamientosController < ApplicationController
         # aca puedo usar render porque ya tengo el dato de la base de datos y el metodo show ya fue llamado, entonces show.html.erb ya fue cargado.
         # render :partial => @entrenamiento
         # => la vista /entrenamientos/_entrenamiento.html.erb
+        mi_archivo = 'buffer_Rx'
+        fh = File.open( mi_archivo , 'r' )
+        #leo linea 1 (STATUS)
+        @status=fh.readline
+        if @status =~ /ADQUIRIENDO/ then 
+          #refresco DB (tiempos)
+          #LEO tiempos de archivo
+          @estado="ADQUIRIENDO..."
+          @entrenamiento.tiempo = fh.readline.to_f
+          #GUARDO en base de datos usando la variable de registro
+          @entrenamiento.save
+          puts "--ADQUIRIENDO--" 
+        elsif @status =~ /PARTIDA FALSA/ then 
+          #refresco DB (reseteo tiempos)
+          #LEO tiempos de archivo
+          @estado="PARTIDA EN FALSO"
+          @entrenamiento.tiempo = fh.readline.to_f
+          #GUARDO en base de datos usando la variable de registro
+          @entrenamiento.save
+          puts "--PARTIDA FALSA--"
+        elsif @status =~ /FINALIZADO/ then 
+          #refresco DB (tiempos y show_or_wait)
+          #LEO tiempos de archivo
+          @estado="FINALIZADO"
+          @entrenamiento.tiempo = fh.readline.to_f
+          #GUARDO en base de datos usando la variable de registro
+          #@entrenamiento.show_or_wait=true
+          @entrenamiento.save
+          puts "--FINALIZADO--" 
+        end 
+        fh.rewind
+        fh.close
     end
     
     def seleccionar

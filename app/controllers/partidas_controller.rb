@@ -47,23 +47,7 @@ class PartidasController < ApplicationController
         #refresco DB (tiempos)
         #LEO tiempos de archivo
         @estado="ADQUIRIENDO..."
-        @tiempo1 = fh.readline.to_f
-        @tiempo2 = fh.readline.to_f
-        @tiempo3 = fh.readline.to_f
-        @tiempo4 = fh.readline.to_f
-        @tiempo5 = fh.readline.to_f
-        @tiempo6 = fh.readline.to_f
-        @tiempo7 = fh.readline.to_f
-        @tiempo8 = fh.readline.to_f
-        #ESCRIBO variable del registro
-        @partida.tiempo_1 = @tiempo1
-        @partida.tiempo_2 = @tiempo2
-        @partida.tiempo_3 = @tiempo3
-        @partida.tiempo_4 = @tiempo4
-        @partida.tiempo_5 = @tiempo5
-        @partida.tiempo_6 = @tiempo6
-        @partida.tiempo_7 = @tiempo7
-        @partida.tiempo_8 = @tiempo8
+        read_tiempos(fh)
         #GUARDO en base de datos usando la variable de registro
         @partida.save
         puts "--ADQUIRIENDO--" 
@@ -71,23 +55,7 @@ class PartidasController < ApplicationController
         #refresco DB (reseteo tiempos)
         #LEO tiempos de archivo
         @estado="PARTIDA EN FALSO"
-        @tiempo1 = fh.readline.to_f
-        @tiempo2 = fh.readline.to_f
-        @tiempo3 = fh.readline.to_f
-        @tiempo4 = fh.readline.to_f
-        @tiempo5 = fh.readline.to_f
-        @tiempo6 = fh.readline.to_f
-        @tiempo7 = fh.readline.to_f
-        @tiempo8 = fh.readline.to_f
-        #ESCRIBO variable del registro
-        @partida.tiempo_1 = @tiempo1
-        @partida.tiempo_2 = @tiempo2
-        @partida.tiempo_3 = @tiempo3
-        @partida.tiempo_4 = @tiempo4
-        @partida.tiempo_5 = @tiempo5
-        @partida.tiempo_6 = @tiempo6
-        @partida.tiempo_7 = @tiempo7
-        @partida.tiempo_8 = @tiempo8
+        read_tiempos(fh)
         #GUARDO en base de datos usando la variable de registro
         @partida.save
         puts "--PARTIDA FALSA--"
@@ -95,23 +63,7 @@ class PartidasController < ApplicationController
         #refresco DB (tiempos y show_or_wait)
         #LEO tiempos de archivo
         @estado="FINALIZADO"
-        @tiempo1 = fh.readline.to_f
-        @tiempo2 = fh.readline.to_f
-        @tiempo3 = fh.readline.to_f
-        @tiempo4 = fh.readline.to_f
-        @tiempo5 = fh.readline.to_f
-        @tiempo6 = fh.readline.to_f
-        @tiempo7 = fh.readline.to_f
-        @tiempo8 = fh.readline.to_f
-        #ESCRIBO variable del registro
-        @partida.tiempo_1 = @tiempo1
-        @partida.tiempo_2 = @tiempo2
-        @partida.tiempo_3 = @tiempo3
-        @partida.tiempo_4 = @tiempo4
-        @partida.tiempo_5 = @tiempo5
-        @partida.tiempo_6 = @tiempo6
-        @partida.tiempo_7 = @tiempo7
-        @partida.tiempo_8 = @tiempo8
+        read_tiempos(fh)
         #GUARDO en base de datos usando la variable de registro
         @partida.show_or_wait=true
         @partida.save
@@ -121,6 +73,27 @@ class PartidasController < ApplicationController
       fh.rewind
       fh.close
   end
+  def read_tiempos (fh)
+    @tiempo1 = fh.readline.to_f
+    @tiempo2 = fh.readline.to_f
+    @tiempo3 = fh.readline.to_f
+    @tiempo4 = fh.readline.to_f
+    @tiempo5 = fh.readline.to_f
+    @tiempo6 = fh.readline.to_f
+    @tiempo7 = fh.readline.to_f
+    @tiempo8 = fh.readline.to_f
+    #ESCRIBO variable del registro
+    @partida.tiempo_1 = @tiempo1
+    @partida.tiempo_2 = @tiempo2
+    @partida.tiempo_3 = @tiempo3
+    @partida.tiempo_4 = @tiempo4
+    @partida.tiempo_5 = @tiempo5
+    @partida.tiempo_6 = @tiempo6
+    @partida.tiempo_7 = @tiempo7
+    @partida.tiempo_8 = @tiempo8
+    
+  end
+  
   
   #este metodo es llamado por el button_to de la vista show porque usa el metodo PUT
   def update
