@@ -1,6 +1,12 @@
 <tr>	<% @partida=partida %>
 	<td> <%= partida.id %> </td>
-	<td> <%=  mejor_tiempo %> </td>
+	<td> <%= if (partida.show_or_wait==false)
+		 			then "Sin ejecutar" 
+					else "Ejecutada" end%> </td>
+	<td> <%= if (partida.show_or_wait==false)
+					then "-"
+					else "#{Nadador.find(ganador).apellido}, #{Nadador.find(ganador).nombre}" end %></td>				
+	<td> <%=  print_tiempo(mejor_tiempo) %> </td>
 	<td> <%= link_to 'Ver', competencia_partida_path(@competencia, @partida)  %> </td>
 	<td> <%= link_to 'Borrar', competencia_partida_path(@competencia, @partida), :confirm => 'Esta a punto de borrar una partida, ¿desea continuar?', :method => :delete%> </td>
 </tr>
