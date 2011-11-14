@@ -43,7 +43,7 @@ class PartidasController < ApplicationController
       fh = File.open( mi_archivo , 'r' )
       #leo linea 1 (STATUS)
       @status=fh.readline
-      if @status =~ /ADQUIRIENDO/ then 
+      if @status =~ /ADQ/ then 
         #refresco DB (tiempos)
         #LEO tiempos de archivo
         @estado="ADQUIRIENDO..."
@@ -51,7 +51,7 @@ class PartidasController < ApplicationController
         #GUARDO en base de datos usando la variable de registro
         @partida.save
         puts "--ADQUIRIENDO--" 
-      elsif @status =~ /PARTIDA FALSA/ then 
+      elsif @status =~ /PF/ then 
         #refresco DB (reseteo tiempos)
         #LEO tiempos de archivo
         @estado="PARTIDA EN FALSO"
@@ -59,7 +59,7 @@ class PartidasController < ApplicationController
         #GUARDO en base de datos usando la variable de registro
         @partida.save
         puts "--PARTIDA FALSA--"
-      elsif @status =~ /FINALIZADO/ then 
+      elsif @status =~ /FIN/ then 
         #refresco DB (tiempos y show_or_wait)
         #LEO tiempos de archivo
         @estado="FINALIZADO"
@@ -67,12 +67,13 @@ class PartidasController < ApplicationController
         #GUARDO en base de datos usando la variable de registro
         @partida.show_or_wait=true
         @partida.save
-        puts "--FINALIZADO--" 
+        puts "--FINALIZADO--"
       end 
       
       fh.rewind
       fh.close
   end
+  
   def read_tiempos (fh)
     @tiempo1 = fh.readline.to_f
     @tiempo2 = fh.readline.to_f

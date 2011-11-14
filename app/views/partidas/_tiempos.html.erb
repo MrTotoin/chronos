@@ -1,5 +1,13 @@
 <br>
-<b>Estado de la unidad central: </b><%= @estado %>
+<% if @partida.show_or_wait == false %>
+		<b>Estado de la unidad central: </b><%= @estado %>               <br>
+<% else %>
+		<b>Partida ejecutada</b>               <br>
+
+<% end %>
+
+<b>	Tipo de prueba:</b> <%= @partida.tipo_prueba %>      <br>
+<b>	Distancia:</b>	 	  <%= @partida.distancia %> metros <br>
 <br>
 <br>
 
@@ -16,7 +24,9 @@
 			<% @nadador = Nadador.find(@partida.nadador_id_1) %>
 			<td> 1 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-			<td> CREAR METODO </td>
+			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
+						elsif @estado == "FINALIZADO"	then "crear metodo..."	
+						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_1) %> </td>
 		</tr>
 	<% end %>
@@ -25,7 +35,9 @@
 			<% @nadador = Nadador.find(@partida.nadador_id_2) %>
 			<td> 2 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-			<td> CREAR METODO </td>
+			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
+						elsif @estado == "FINALIZADO"	then "crear metodo..."	
+						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_2) %> </td>
 		</tr>
 	<% end %>
@@ -33,7 +45,9 @@
 		<tr> <% @nadador = Nadador.find(@partida.nadador_id_3) %>
 			<td> 3 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-			<td> CREAR METODO </td>
+			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
+						elsif @estado == "FINALIZADO"	then "crear metodo..."
+						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_3) %> </td>
 		</tr>
 	<% end %>
@@ -41,7 +55,9 @@
 		<tr> <% @nadador = Nadador.find(@partida.nadador_id_4) %>
 			<td> 4 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-			<td> CREAR METODO </td>
+			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
+						elsif @estado == "FINALIZADO"	then "crear metodo..."	
+						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_4) %> </td>
 		</tr>
 	<% end %>
@@ -49,7 +65,9 @@
 		<tr> <% @nadador = Nadador.find(@partida.nadador_id_5) %>
 			<td> 5 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-			<td> CREAR METODO </td>
+			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
+						elsif @estado == "FINALIZADO"	then "crear metodo..."	
+						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_5) %> </td>
 		</tr>
 	<% end %>
@@ -57,7 +75,9 @@
 		<tr> <% @nadador = Nadador.find(@partida.nadador_id_6) %>
 			<td> 6 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-			<td> CREAR METODO </td>
+			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
+						elsif @estado == "FINALIZADO"	then "crear metodo..."	
+						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_6) %> </td>
 		</tr>
 	<% end %>
@@ -65,7 +85,9 @@
 		<tr> <% @nadador = Nadador.find(@partida.nadador_id_7) %>
 			<td> 7 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-			<td> CREAR METODO </td>
+			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
+						elsif @estado == "FINALIZADO"	then "crear metodo..."	
+						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_7) %> </td>
 		</tr>
 	<% end %>
@@ -73,7 +95,9 @@
 		<tr> <% @nadador = Nadador.find(@partida.nadador_id_8) %>
 			<td> 8 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
-			<td> CREAR METODO </td>
+			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
+						elsif @estado == "FINALIZADO"	then "crear metodo..."	
+						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_8) %> </td>
 		</tr>
 	<% end %>

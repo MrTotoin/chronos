@@ -36,7 +36,9 @@ al metodo wait del entrenamientos controller.  -->
 				entrenamientos controller. Se le pasan datos dentro de la 
 				etiqueta que abre el DIV.  -->
 				
-				<b>Estado de la unidad central: </b><%= @estado %>               <br>
+				<% if @entrenamiento.show_or_wait == false %>
+						<b>Estado de la unidad central: </b><%= @estado %>               <br>
+				<% end %>
 				<b>	Tipo de prueba:</b> <%= @entrenamiento.tipo_prueba %>      <br>
 				<b>	Distancia:</b>	 	  <%= @entrenamiento.distancia %> metros <br>
 				<b> Tiempo: </b>			  <%= print_tiempo(@entrenamiento.tiempo) %>	        <br>

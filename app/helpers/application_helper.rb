@@ -17,9 +17,13 @@ module ApplicationHelper
     if @sec>=60
       @min = (@sec/60).to_i
       @sec = @sec-(@min*60)
-      return "#{@min} : #{@sec} : #{@ms}"
+      if @sec<10
+        return "#{@min} : 0#{@sec} : #{@ms}"
+      else
+        return "#{@min} : #{@sec} : #{@ms}"
+      end
     else
-      return "0 : #{@sec} : #{@ms}"
+      return "00 : #{@sec} : #{@ms}"
     end  
   end
   
