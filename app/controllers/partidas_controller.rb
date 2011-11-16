@@ -39,6 +39,9 @@ class PartidasController < ApplicationController
   def wait
       @partida = Partida.find(params[:partida_id])
       @competencia = @partida.competencia
+      # llamo al programa ./intercambio que es el que le pregunta a la UC
+      # y escribe en el archivo buffer_Rx.txt lo que la UC le respondio.
+      system("./intercambio")
       mi_archivo = 'buffer_Rx'
       fh = File.open( mi_archivo , 'r' )
       #leo linea 1 (STATUS)
@@ -51,14 +54,16 @@ class PartidasController < ApplicationController
         #GUARDO en base de datos usando la variable de registro
         @partida.save
         puts "--ADQUIRIENDO--" 
+        
       elsif @status =~ /PF/ then 
-        #refresco DB (reseteo tiempos)
+        #refresco DB (el reseteo de tiempos lo hace la UC, yo solo reflejo lo que pasa)
         #LEO tiempos de archivo
         @estado="PARTIDA EN FALSO"
         read_tiempos(fh)
         #GUARDO en base de datos usando la variable de registro
         @partida.save
         puts "--PARTIDA FALSA--"
+      
       elsif @status =~ /FIN/ then 
         #refresco DB (tiempos y show_or_wait)
         #LEO tiempos de archivo
@@ -74,6 +79,9 @@ class PartidasController < ApplicationController
       fh.close
   end
   
+  #este metodo es llamado desde el metodo WAIT para leer desde archivo
+  #buffer_Rx (se le pasa el handler del archivo), y devuelve los valores
+  #en la variable de instancia @partida
   def read_tiempos (fh)
     @tiempo1 = fh.readline.to_f
     @tiempo2 = fh.readline.to_f
