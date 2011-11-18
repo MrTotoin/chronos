@@ -11,8 +11,10 @@ class PartidasController < ApplicationController
     @partida.show_or_wait=false
    # tiempo_a_0
     if @partida.save
+      flash[:success] = "La partida se ha creado correctamente."
       redirect_to competencia_path(@competencia)
     else
+      flash[:error] = "La partida no se ha podido crear. Por favor, intentelo nuevamente."
       redirect_to root_path
     end
   end

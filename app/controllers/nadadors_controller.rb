@@ -9,14 +9,12 @@ class NadadorsController < ApplicationController
         @nadador.nombre = @nadador.nombre.capitalize
         @nadador.apellido = @nadador.apellido.capitalize
         if @nadador.save  
-          #flash[:success] = "Welcome to the Sample App!"
+          flash[:success] = "Nuevo nadador agregado"
           @title = "Nadadores"
-          redirect_to nadadores_home_path     
+          redirect_to nadadors_path     
          else
           @title = "FALLO AL GUARDAR"
-          #
-          #MIRAR listado 10.12 para mandar mensajes por flash
-          #
+          flash[:error] = "Error al guardar nadador"
           redirect_to new_nadador_path
          end
       end
@@ -24,6 +22,7 @@ class NadadorsController < ApplicationController
       def destroy
           @nadador = Nadador.find(params[:id])
           @nadador.destroy
+          flash[:error] = "Nadador borrado"
           redirect_to nadadors_path
       end
 
