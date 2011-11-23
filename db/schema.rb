@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111123011826) do
+ActiveRecord::Schema.define(:version => 20111123153323) do
 
   create_table "borradors", :force => true do |t|
     t.integer  "nadador_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20111123011826) do
     t.boolean  "show_or_wait"
     t.boolean  "partida_rapida"
     t.string   "tipo_prueba"
-    t.integer  "laps",           :limit => 255
+    t.integer  "laps",             :limit => 255
     t.integer  "nadador_id_1"
     t.string   "tiempo_1"
     t.integer  "nadador_id_2"
@@ -75,6 +75,14 @@ ActiveRecord::Schema.define(:version => 20111123011826) do
     t.string   "tiempo_8"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "puesto_nadador_1"
+    t.integer  "puesto_nadador_2"
+    t.integer  "puesto_nadador_3"
+    t.integer  "puesto_nadador_4"
+    t.integer  "puesto_nadador_5"
+    t.integer  "puesto_nadador_6"
+    t.integer  "puesto_nadador_7"
+    t.integer  "puesto_nadador_8"
   end
 
 end

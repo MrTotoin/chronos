@@ -26,8 +26,9 @@
 			<td> 1 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
-						elsif @estado == "FINALIZADO"	then "crear metodo..."	
-						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
+								elsif @estado == "FINALIZADO" || @partida.show_or_wait==true	
+							 		"#{@partida.puesto_nadador_1}"	
+						 		end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_1.to_i) %> </td>
 		</tr>
 	<% end %>
@@ -37,8 +38,9 @@
 			<td> 2 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
-						elsif @estado == "FINALIZADO"	then "crear metodo..."	
-						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
+								elsif @estado == "FINALIZADO"	|| @partida.show_or_wait==true	
+							 		"#{@partida.puesto_nadador_2}"	
+						 		end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_2.to_i) %> </td>
 		</tr>
 	<% end %>
@@ -47,8 +49,9 @@
 			<td> 3 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
-						elsif @estado == "FINALIZADO"	then "crear metodo..."
-						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
+									elsif @estado == "FINALIZADO"	|| @partida.show_or_wait==true	
+							 			"#{@partida.puesto_nadador_3}"
+				 					end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_3.to_i) %> </td>
 		</tr>
 	<% end %>
@@ -57,8 +60,9 @@
 			<td> 4 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
-						elsif @estado == "FINALIZADO"	then "crear metodo..."	
-						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
+								elsif @estado == "FINALIZADO"	|| @partida.show_or_wait==true	
+							 		"#{@partida.puesto_nadador_4}"	
+						 		end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_4.to_i) %> </td>
 		</tr>
 	<% end %>
@@ -67,8 +71,9 @@
 			<td> 5 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
-						elsif @estado == "FINALIZADO"	then "crear metodo..."	
-						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
+								elsif @estado == "FINALIZADO"	|| @partida.show_or_wait==true	
+							 		"#{@partida.puesto_nadador_5}"	
+					 			end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_5.to_i) %> </td>
 		</tr>
 	<% end %>
@@ -77,8 +82,9 @@
 			<td> 6 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
-						elsif @estado == "FINALIZADO"	then "crear metodo..."	
-						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
+								elsif @estado == "FINALIZADO"	|| @partida.show_or_wait==true
+							 		"#{@partida.puesto_nadador_6}"	
+						 		end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_6.to_i) %> </td>
 		</tr>
 	<% end %>
@@ -87,8 +93,9 @@
 			<td> 7 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
-						elsif @estado == "FINALIZADO"	then "crear metodo..."	
-						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
+								elsif @estado == "FINALIZADO"	|| @partida.show_or_wait==true	
+									"#{@partida.puesto_nadador_7}"	
+								end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_7.to_i) %> </td>
 		</tr>
 	<% end %>
@@ -97,8 +104,9 @@
 			<td> 8 </td> 
 			<td> <%= @nadador.nombre %> <%= @nadador.apellido %> </td>
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
-						elsif @estado == "FINALIZADO"	then "crear metodo..."	
-						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
+								elsif @estado == "FINALIZADO"	|| @partida.show_or_wait==true
+							 		"#{@partida.puesto_nadador_8}"	
+								end %>  </td>
 			<td> <%= print_tiempo(@partida.tiempo_8.to_i) %> </td>
 		</tr>
 	<% end %>

@@ -39,7 +39,13 @@ class PartidasController < ApplicationController
     @competencia = @partida.competencia
     if @partida.show_or_wait==false
       #debo enviar el numero de laps a la unidad central para que pueda arrancar a contar tiempo
-      
+      mi_archivo = 'buffer_Tx.txt'
+      fh = File.open( mi_archivo , 'w' )
+      fh.puts("#{@partida.laps}")
+      #llamo a programa intercambio y cierro archivo
+      system("./intercambio")
+      fh.rewind
+      fh.close
     end
   end
   
@@ -52,7 +58,7 @@ class PartidasController < ApplicationController
       # llamo al programa ./intercambio que es el que le pregunta a la UC
       # y escribe en el archivo buffer_Rx.txt lo que la UC le respondio.
       system("./intercambio")
-      mi_archivo = 'buffer_Rx'
+      mi_archivo = 'buffer_Rx.txt'
       fh = File.open( mi_archivo , 'r' )
       #leo linea 1 (STATUS)
       @status=fh.readline
@@ -65,14 +71,23 @@ class PartidasController < ApplicationController
         @partida.save
         puts "--ADQUIRIENDO--" 
         
-      elsif @status =~ /PF/ then 
+      elsif @status =~ /PCOK/ then 
         #refresco DB (el reseteo de tiempos lo hace la UC, yo solo reflejo lo que pasa)
         #LEO tiempos de archivo
-        @estado="PARTIDA EN FALSO"
-        read_tiempos(fh)
+        @estado="Esperando boton COMIENZO en Unidad Central"
+        #read_tiempos(fh)
         #GUARDO en base de datos usando la variable de registro
-        @partida.save
-        puts "--PARTIDA FALSA--"
+        #@partida.save
+        puts "--PCOK--"
+        
+      elsif @status =~ /SET/ then 
+        #refresco DB (el reseteo de tiempos lo hace la UC, yo solo reflejo lo que pasa)
+        #LEO tiempos de archivo
+        @estado="Esperando orden de largada del juez de competencia"
+        #read_tiempos(fh)
+        #GUARDO en base de datos usando la variable de registro
+        #@partida.save
+        puts "--SET--"
       
       elsif @status =~ /FIN/ then 
         #refresco DB (tiempos y show_or_wait)
@@ -112,6 +127,15 @@ class PartidasController < ApplicationController
     @partida.tiempo_6 = @tiempo6
     @partida.tiempo_7 = @tiempo7
     @partida.tiempo_8 = @tiempo8
+    #LEO Y ESCRIBO PUESTOS
+    @partida.puesto_nadador_1 = fh.readline.to_i 
+    @partida.puesto_nadador_2 = fh.readline.to_i 
+    @partida.puesto_nadador_3 = fh.readline.to_i 
+    @partida.puesto_nadador_4 = fh.readline.to_i 
+    @partida.puesto_nadador_5 = fh.readline.to_i 
+    @partida.puesto_nadador_6 = fh.readline.to_i 
+    @partida.puesto_nadador_7 = fh.readline.to_i 
+    @partida.puesto_nadador_8 = fh.readline.to_i 
     
   end
   
