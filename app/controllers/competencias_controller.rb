@@ -6,6 +6,7 @@ class CompetenciasController < ApplicationController
   
   def create
     @competencia = Competencia.new(params[:competencia])
+    @competencia.largo_pileta = params[:competencia][:largo_pileta]
     if @competencia.save  
       #flash[:success] = "Welcome to the Sample App!"
       @title = "Nadadores"
@@ -37,7 +38,9 @@ class CompetenciasController < ApplicationController
   
   def update
       @competencia = Competencia.find(params[:id])
-      if @competencia.update_attributes(params[:competencia])
+      @competencia.update_attributes(params[:competencia])
+      @competencia.largo_pileta = params[:competencia][:largo_pileta]
+      if @competencia.save
         redirect_to competencia_path(@competencia)
       else
         @title = "Edit user"

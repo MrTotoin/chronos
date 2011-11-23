@@ -8,6 +8,7 @@ class PartidasController < ApplicationController
   def create
     @competencia = Competencia.find(params[:competencia_id])
     @partida = @competencia.partidas.build(params[:partida])
+    @partida.laps = params[:partida][:laps]    
     @partida.show_or_wait=false
    # tiempo_a_0
     if @partida.save
@@ -36,11 +37,18 @@ class PartidasController < ApplicationController
   def show
     @partida = Partida.find(params[:id])
     @competencia = @partida.competencia
+    if @partida.show_or_wait==false
+      #debo enviar el numero de laps a la unidad central para que pueda arrancar a contar tiempo
+      
+    end
   end
   
   def wait
       @partida = Partida.find(params[:partida_id])
       @competencia = @partida.competencia
+      if @partida.show_or_wait==true
+          return nil
+      end      
       # llamo al programa ./intercambio que es el que le pregunta a la UC
       # y escribe en el archivo buffer_Rx.txt lo que la UC le respondio.
       system("./intercambio")
@@ -74,8 +82,10 @@ class PartidasController < ApplicationController
         #GUARDO en base de datos usando la variable de registro
         @partida.show_or_wait=true
         @partida.save
+        #render competencia_path(@competencia)
         puts "--FINALIZADO--"
       end 
+     
       
       fh.rewind
       fh.close

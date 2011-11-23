@@ -7,7 +7,8 @@
 <% end %>
 
 <b>	Tipo de prueba:</b> <%= @partida.tipo_prueba %>      <br>
-<b>	Distancia:</b>	 	  <%= @partida.distancia %> metros <br>
+<b>	Distancia:</b>	 	  <%= @partida.laps*@competencia.largo_pileta %> metros <br>
+<b> Numero de laps: </b> <%= @partida.laps %>
 <br>
 <br>
 
@@ -27,7 +28,7 @@
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
 						elsif @estado == "FINALIZADO"	then "crear metodo..."	
 						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
-			<td> <%= print_tiempo(@partida.tiempo_1) %> </td>
+			<td> <%= print_tiempo(@partida.tiempo_1.to_i) %> </td>
 		</tr>
 	<% end %>
 	<% if @partida.nadador_id_2!=nil %>
@@ -38,7 +39,7 @@
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
 						elsif @estado == "FINALIZADO"	then "crear metodo..."	
 						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
-			<td> <%= print_tiempo(@partida.tiempo_2) %> </td>
+			<td> <%= print_tiempo(@partida.tiempo_2.to_i) %> </td>
 		</tr>
 	<% end %>
 	<% if @partida.nadador_id_3!=nil %>
@@ -48,7 +49,7 @@
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
 						elsif @estado == "FINALIZADO"	then "crear metodo..."
 						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
-			<td> <%= print_tiempo(@partida.tiempo_3) %> </td>
+			<td> <%= print_tiempo(@partida.tiempo_3.to_i) %> </td>
 		</tr>
 	<% end %>
 	<% if @partida.nadador_id_4!=nil %>
@@ -58,7 +59,7 @@
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
 						elsif @estado == "FINALIZADO"	then "crear metodo..."	
 						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
-			<td> <%= print_tiempo(@partida.tiempo_4) %> </td>
+			<td> <%= print_tiempo(@partida.tiempo_4.to_i) %> </td>
 		</tr>
 	<% end %>
 	<% if @partida.nadador_id_5!=nil %>
@@ -68,7 +69,7 @@
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
 						elsif @estado == "FINALIZADO"	then "crear metodo..."	
 						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
-			<td> <%= print_tiempo(@partida.tiempo_5) %> </td>
+			<td> <%= print_tiempo(@partida.tiempo_5.to_i) %> </td>
 		</tr>
 	<% end %>
 	<% if @partida.nadador_id_6!=nil %>
@@ -78,7 +79,7 @@
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
 						elsif @estado == "FINALIZADO"	then "crear metodo..."	
 						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
-			<td> <%= print_tiempo(@partida.tiempo_6) %> </td>
+			<td> <%= print_tiempo(@partida.tiempo_6.to_i) %> </td>
 		</tr>
 	<% end %>
 	<% if @partida.nadador_id_7!=nil %>
@@ -88,7 +89,7 @@
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
 						elsif @estado == "FINALIZADO"	then "crear metodo..."	
 						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
-			<td> <%= print_tiempo(@partida.tiempo_7) %> </td>
+			<td> <%= print_tiempo(@partida.tiempo_7.to_i) %> </td>
 		</tr>
 	<% end %>
 	<% if @partida.nadador_id_8!=nil %>
@@ -98,7 +99,7 @@
 			<td> <%= if @estado == "ADQUIRIENDO..."  then "-"
 						elsif @estado == "FINALIZADO"	then "crear metodo..."	
 						elsif @partida.show_or_wait == true then "crear metodo 2..." end %>  </td>
-			<td> <%= print_tiempo(@partida.tiempo_8) %> </td>
+			<td> <%= print_tiempo(@partida.tiempo_8.to_i) %> </td>
 		</tr>
 	<% end %>
 </table>

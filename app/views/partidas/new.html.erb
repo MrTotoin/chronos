@@ -7,8 +7,8 @@
 		<b> Tipo de prueba</b> <%= f.select :tipo_prueba, ['Crawl','Pecho', 'Mariposa', 'Espalda', 'Combinados']%>	
 	</div>
 	<div class="field">
-		<b> Distancia</b> <%= f.select :distancia, ['25mts','50mts','100mts','200mts','500mts']%>		
-	</div> <br>
+		<b> Numero de laps</b> <%= f.select :laps, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9]]%>		
+	</div> 
 	<div class="field">
 		<b> Carril 1</b> <%= f.collection_select :nadador_id_1, @nadadores, :id,:nombre_completo, :include_blank => '-' %>	</div>
 	<div class="field">
