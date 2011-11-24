@@ -10,8 +10,8 @@
 		<%= f.date_select :fecha, {:start_year => 2000, :promt => true, :order => [:day, :month, :year]} %>	
 	</div>
 	<div class="field">
-		<%= f.label :largo_de_la_pileta %> (numeros enteros, sin comas)<br />
-		<%= f.select :largo_pileta, [['20mts', 20], ['25mts', 25], ['30mts', 30], ['35mts', 35], ['40mts', 40], ['45mts', 45], ['50mts', 50]] %> [metros]	</div>
+		<%= f.label :largo_de_la_pileta %><br />
+		<%= f.select :largo_pileta, [['20mts', 20], ['25mts', 25], ['30mts', 30], ['35mts', 35], ['40mts', 40], ['45mts', 45], ['50mts', 50]] %> 	</div>
 	<div class="actions">
 		<%= f.submit "Actualizar" %>
 	</div>

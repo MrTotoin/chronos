@@ -12,7 +12,7 @@ class PartidasController < ApplicationController
     @partida.show_or_wait=false
    # tiempo_a_0
     if @partida.save
-      flash[:success] = "La partida se ha creado correctamente."
+      flash[:success] = "La partida #{@partida.id} se ha creado correctamente."
       redirect_to competencia_path(@competencia)
     else
       flash[:error] = "La partida no se ha podido crear. Por favor, intentelo nuevamente."
@@ -30,7 +30,7 @@ class PartidasController < ApplicationController
     @partida = Partida.find(params[:id])
     @competencia = @partida.competencia
     @partida.destroy
-    flash[:error] = "Partida borrada"
+    flash[:error] = "La partida #{@partida.id} ha sido borrada"
     redirect_to competencia_path(@competencia)
   end
   
@@ -42,10 +42,11 @@ class PartidasController < ApplicationController
       mi_archivo = 'buffer_Tx.txt'
       fh = File.open( mi_archivo , 'w' )
       fh.puts("#{@partida.laps}")
-      #llamo a programa intercambio y cierro archivo
+      #llamo a programa intercambio para mandar el numero de laps a la unidad central
       system("./intercambio")
       fh.rewind
       fh.close
+      flash[:error] = "Atencion: no abandone esta pagina antes de que la partida se muestre como: <Partida ejecutada>. La adquisicion de datos puede verse comprometida."
     end
   end
   
@@ -54,7 +55,8 @@ class PartidasController < ApplicationController
       @competencia = @partida.competencia
       if @partida.show_or_wait==true
           return nil
-      end      
+      end   
+         
       # llamo al programa ./intercambio que es el que le pregunta a la UC
       # y escribe en el archivo buffer_Rx.txt lo que la UC le respondio.
       system("./intercambio")
@@ -62,42 +64,40 @@ class PartidasController < ApplicationController
       fh = File.open( mi_archivo , 'r' )
       #leo linea 1 (STATUS)
       @status=fh.readline
+      
+      #la unidad central esta adquiriendo datos (los cronometros estan corriendo)
       if @status =~ /ADQ/ then 
-        #refresco DB (tiempos)
-        #LEO tiempos de archivo
-        @estado="ADQUIRIENDO..."
+        #escribo variable @estado para mostrar en la vista show de partidas;
+        @estado = "Adquiriendo tiempos..."
+        #leo tiempos y puestos de buffer_Rx. Luego guardo en la base de datos
         read_tiempos(fh)
-        #GUARDO en base de datos usando la variable de registro
         @partida.save
         puts "--ADQUIRIENDO--" 
-        
+      
+      #la unidad central ya recibio el numero de laps que la mande al cargar la vista show de partidas
+      #espero hasta que se presione el boton central de la unidad central (entonces paso a estado SET)  
       elsif @status =~ /PCOK/ then 
-        #refresco DB (el reseteo de tiempos lo hace la UC, yo solo reflejo lo que pasa)
-        #LEO tiempos de archivo
-        @estado="Esperando boton COMIENZO en Unidad Central"
-        #read_tiempos(fh)
-        #GUARDO en base de datos usando la variable de registro
-        #@partida.save
+        #escribo variable @estado para mostrar en la vista show de partidas;
+        @estado="Esperando que se presione el boton COMIENZO de la Unidad Central"
         puts "--PCOK--"
         
-      elsif @status =~ /SET/ then 
-        #refresco DB (el reseteo de tiempos lo hace la UC, yo solo reflejo lo que pasa)
-        #LEO tiempos de archivo
+      #la unidad central espera la senal de largada que de el juez de competencia;
+      #cuando esto suceda paso a estado ADQ
+      elsif @status =~ /SET/ then
+        #escribo variable @estado para mostrar en la vista show de partidas 
         @estado="Esperando orden de largada del juez de competencia"
-        #read_tiempos(fh)
-        #GUARDO en base de datos usando la variable de registro
-        #@partida.save
         puts "--SET--"
       
+      #todos los nadadores terminaron de nadar y leo por ultima vez los tiempos y los 
+      #puestos que estan en el archivo buffer_Rx
       elsif @status =~ /FIN/ then 
-        #refresco DB (tiempos y show_or_wait)
-        #LEO tiempos de archivo
-        @estado="FINALIZADO"
+        #no escribo variable @estado, ya que cuando show_or_wait=true, entonces muestro
+        #la leyenda "Partida ejecutada" en la vista show de partidas 
+        #leo los tiempos y puestos por ultima vez, luego los guardo
         read_tiempos(fh)
-        #GUARDO en base de datos usando la variable de registro
+        #modifico show_or_wait para que no se ejecute mas esta parte del codigo
         @partida.show_or_wait=true
         @partida.save
-        #render competencia_path(@competencia)
         puts "--FINALIZADO--"
       end 
      
@@ -141,12 +141,14 @@ class PartidasController < ApplicationController
   
   
   #este metodo es llamado por el button_to de la vista show porque usa el metodo PUT
+  #actualmente no se usa porque se guarda automaticamente cuando llega la palabra FIN 
+  #en la linea de estado del archivo buffer.Rx.txt
   def update
     @partida = Partida.find(params[:id])
     @partida.show_or_wait=true
     @partida.save
     @competencia = @partida.competencia
-    flash[:success] = "Partida guardada"
+    flash[:success] = "La partida #{@partida.id} ha sido guardada"
     redirect_to competencia_path(@competencia)
   end
 

@@ -3,7 +3,7 @@
 	<td> <%= if (partida.show_or_wait==false)	then "Sin ejecutar" 
 						else "Ejecutada" end%> </td>
 	<td> <%= if partida.show_or_wait==false	then "-"
-						else "#{Nadador.find(ganador).apellido}, #{Nadador.find(ganador).nombre}" end %> 	</td>				
+						else ganador end %> 	</td>				
 	<td> <%=  print_tiempo(mejor_tiempo.to_i) %> </td>
 	<td> <%= if (partida.show_or_wait==false)	then 
 							link_to 'Ejecutar', competencia_partida_path(@competencia, @partida)

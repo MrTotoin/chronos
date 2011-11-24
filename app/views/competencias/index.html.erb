@@ -1,5 +1,6 @@
 <h1>Competencias</H1>
 <br>
+		
 	<table>
 		<tr>
 			<th>Nombre</th>
@@ -7,15 +8,17 @@
 			<th></th>
 			<th></th>
 		</tr>
+
 		<% @competencias.each do |competencia| %>
 		<tr>
 			<td> <%= link_to competencia.nombre, competencia_path(competencia.id) %> </td>
 			<td> <%= competencia.fecha.strftime("%d/%m/%Y") %> </td>
 			<td> <%= link_to 'editar', edit_competencia_path(competencia.id)  %> </td>
-			<td> <%= link_to 'borrar', competencia_path(competencia), :confirm => 'Esta a punto de borrar una competencia, ¿desea continuar?', :method => :delete %> </td>			
+			<td> <%= link_to 'borrar', competencia_path(competencia), :confirm => 'Esta a punto de borrar una competencia y todas sus partidas, ¿desea continuar?', :method => :delete %> </td>			
 		</tr>
 		<% end %> 
 	</table>
+	
 		
 <%= link_to "Agregar competencia", new_competencia_path %>
 

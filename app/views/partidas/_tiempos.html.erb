@@ -111,3 +111,10 @@
 		</tr>
 	<% end %>
 </table>
+
+<div style="float:right; with:50%; height:50px; margin-right:350px; ">
+	<%= if @partida.show_or_wait==true 
+				button_to 'Volver a competencia', competencia_path(@competencia.id), :method => :get 
+			end %>
+</div>
+<br>

@@ -8,10 +8,12 @@ class CompetenciasController < ApplicationController
     @competencia = Competencia.new(params[:competencia])
     @competencia.largo_pileta = params[:competencia][:largo_pileta]
     if @competencia.save  
-      #flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Se ha creado con exito la competencia #{@competencia.nombre}."
       @title = "Nadadores"
-      redirect_to competencia_path(@competencia)   
+      #redirect_to competencia_path(@competencia)   
+      redirect_to competencias_path
      else
+      flash[:error] = "Ha ocurrido un error y la nueva competencia no pudo ser creada. Por favor intentelo de nuevo."
       @title = "FALLO AL GUARDAR"
       #
       #MIRAR listado 10.12 para mandar mensajes por flash
@@ -41,6 +43,7 @@ class CompetenciasController < ApplicationController
       @competencia.update_attributes(params[:competencia])
       @competencia.largo_pileta = params[:competencia][:largo_pileta]
       if @competencia.save
+        flash[:success] = "Se han actualizado correctamente los datos de la competencia #{@competencia.nombre}."
         redirect_to competencia_path(@competencia)
       else
         @title = "Edit user"
@@ -51,6 +54,7 @@ class CompetenciasController < ApplicationController
   def destroy
     @competencia = Competencia.find(params[:id])
     @competencia.destroy
+    flash[:error] = "La competencia #{@competencia.nombre} ha sido destruida junto con todas sus partidas."
     redirect_to competencias_path
   end
   
