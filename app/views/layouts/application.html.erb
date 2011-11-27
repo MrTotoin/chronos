@@ -12,10 +12,16 @@
 	<div class="container">
 	      <%= render 'layouts/header' %>
 	      <section class="round">
-				<% flash.each do |key, value| %>
+				<!--<% flash.each do |key, value| %>
 					<div class="flash <%= key %>"><%= value %></div>
-			  <% end %>
-	        <%= yield %>
+			  <% end %>-->
+	      <% if flash[:error]%>
+					<div class="flash <%= :error %>"><%= flash[:error] %></div>
+				<% end %>
+				<% if flash[:success]%>
+					<div class="flash <%= :success %>"><%= flash[:success] %></div>
+				<% end %>
+	  			<%= yield %>
 	      </section>
 	</div>
 </body>

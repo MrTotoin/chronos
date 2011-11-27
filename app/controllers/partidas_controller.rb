@@ -46,7 +46,7 @@ class PartidasController < ApplicationController
       system("./intercambio")
       fh.rewind
       fh.close
-      flash[:error] = "Atencion: no abandone esta pagina antes de que la partida se muestre como: <Partida ejecutada>. La adquisicion de datos puede verse comprometida."
+      #flash[:error] = "Atencion: no abandone esta pagina antes de que la partida se muestre como: <Partida ejecutada>. La adquisicion de datos puede verse comprometida."
     end
   end
   
@@ -54,7 +54,8 @@ class PartidasController < ApplicationController
       @partida = Partida.find(params[:partida_id])
       @competencia = @partida.competencia
       if @partida.show_or_wait==true
-          return nil
+        flash[:notice]="Partida ejecutada."
+        return nil
       end   
          
       # llamo al programa ./intercambio que es el que le pregunta a la UC
@@ -68,7 +69,8 @@ class PartidasController < ApplicationController
       #la unidad central esta adquiriendo datos (los cronometros estan corriendo)
       if @status =~ /ADQ/ then 
         #escribo variable @estado para mostrar en la vista show de partidas;
-        @estado = "Adquiriendo tiempos..."
+        #@estado = "Adquiriendo tiempos..."
+        flash[:notice]="Adquiriendo tiempos..."
         #leo tiempos y puestos de buffer_Rx. Luego guardo en la base de datos
         read_tiempos(fh)
         @partida.save
@@ -78,14 +80,16 @@ class PartidasController < ApplicationController
       #espero hasta que se presione el boton central de la unidad central (entonces paso a estado SET)  
       elsif @status =~ /PCOK/ then 
         #escribo variable @estado para mostrar en la vista show de partidas;
-        @estado="Esperando que se presione el boton COMIENZO de la Unidad Central"
+        #@estado="Esperando que se presione el boton COMIENZO de la Unidad Central"
+        flash[:notice]="Presionar el boton COMIENZO de la Unidad Central"
         puts "--PCOK--"
         
       #la unidad central espera la senal de largada que de el juez de competencia;
       #cuando esto suceda paso a estado ADQ
       elsif @status =~ /SET/ then
         #escribo variable @estado para mostrar en la vista show de partidas 
-        @estado="Esperando orden de largada del juez de competencia"
+        #@estado="Esperando orden de largada del juez de competencia"
+        flash[:notice]="Esperando orden de largada del juez de competencia"
         puts "--SET--"
       
       #todos los nadadores terminaron de nadar y leo por ultima vez los tiempos y los 
@@ -98,6 +102,7 @@ class PartidasController < ApplicationController
         #modifico show_or_wait para que no se ejecute mas esta parte del codigo
         @partida.show_or_wait=true
         @partida.save
+        flash[:notice]="Partida ejecutada."
         puts "--FINALIZADO--"
       end 
      

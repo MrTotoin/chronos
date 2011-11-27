@@ -4,7 +4,8 @@
 						else "Ejecutada" end%> </td>
 	<td> <%= if partida.show_or_wait==false	then "-"
 						else ganador end %> 	</td>				
-	<td> <%=  print_tiempo(mejor_tiempo.to_i) %> </td>
+	<td> <%=  if partida.show_or_wait==false then "00 : 00 : 000" 
+							else print_tiempo(mejor_tiempo.to_i) end %> </td>
 	<td> <%= if (partida.show_or_wait==false)	then 
 							link_to 'Ejecutar', competencia_partida_path(@competencia, @partida)
 						else 

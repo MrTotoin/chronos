@@ -6,7 +6,7 @@ class ChangeDataTypeForPartidasDistancia < ActiveRecord::Migration
   end
 
   def self.down
-    change_table :widgets do |t|
+    change_table :partidas do |t|
           t.change :distancia, :string
     end
   end

@@ -16,6 +16,11 @@
 
 <h1>Partida <%= @partida.id %> </h1>
 
+<div style="color:red ;">
+	<b>
+	<%= if @partida.show_or_wait == false then "ATENCION: no abandone esta pagina antes de que la partida se muestre como: <Partida ejecutada>. La adquisicion de datos puede verse comprometida." end %>
+	</b>
+</div>
 
 <div id="div_tiempo" data-id="<%= @partida.id %>" >
 	<!-- El scrypt actualiza TODA LA TABLA en lugar de solo un campo -->
@@ -24,13 +29,11 @@
 
 
 
-
-<br>
 <!--
 <div style="float:right; with:100%; height:50px; margin-right:350px; ">
 	<%= button_to 'Descartar Partida', competencia_partida_path(@competencia, @partida), :method => :delete, :confirm =>'Esta a punto de borrar una partida, ¿desea continuar?' %>
 </div>
 -->
-<br>
+
 
 

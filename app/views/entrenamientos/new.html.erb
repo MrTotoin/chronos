@@ -11,10 +11,15 @@
 		<%= f.label :tipo_de_prueba %><br />
 		<%= f.select :tipo_prueba, ['Crawl','Pecho', 'Mariposa', 'Espalda', 'Combinados']%>	
 	</div>
-	<div>
-		<%= f.label :distancia %><br />
-		<%= f.select :distancia, [['25mts', 25], ['50mts', 50], ['100mts', 100], ['200mts', 200], ['500mts', 500]]%>	
+	<div class="field">
+		<%= f.label :largo_de_la_pileta %> <br>
+		<%= f.select :largo_pileta, [['20mts', 20], ['25mts', 25], ['30mts', 30], ['35mts', 35], ['40mts', 40], ['45mts', 45], ['50mts', 50]] %>
+</div>
+	<div class="field">
+		<%= f.label :numero_de_laps %><br />
+		<%= f.select :laps, [['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8], ['9', 9]]%>		
 	</div>
+		
 	<div class="actions">
 		<%= f.submit "continuar" %>
 	</div>

@@ -1,7 +1,20 @@
-<b>Estado de la unidad central: </b><%= @estado %>               <br>
+<br>
+
 <b>	Tipo de prueba:</b> <%= @entrenamiento.tipo_prueba %>      <br>
-<b>	Distancia:</b>	 	  <%= @entrenamiento.distancia %> metros <br>
+<b>	Distancia:</b>	 	  <%= @entrenamiento.largo_pileta*@entrenamiento.laps %> metros <br>
 <b> Tiempo:</b>			  <%= print_tiempo(@entrenamiento.tiempo) %>	        <br>
+
+<br>
+
+<% if flash[:notice]%>
+	<div class="flash <%= :notice %>"><%= flash[:notice] %></div>
+<% end %>
+
+<div style="float:right; with:50%; height:50px; margin-right:350px; ">
+	<%= if @entrenamiento.show_or_wait==true 
+				button_to 'Volver a Entrenamientos', entrenamientos_home_path, :method => :get 
+			end %>
+</div>
 
 <!-- Este archivo es llamado cada vez que se invoca la linea render @entrenamiento. Esta linea esta en el script wait.js.erb que es llamado cada un segundo por el script que se corre en la pagina /views/entrenamientos/show.html.erb. 
 Por ahora solo actualiza tiempo, aunque en rigor este partial deberia presentar todos los campos del modelo entrenamientos. -->

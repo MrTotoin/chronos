@@ -7,7 +7,7 @@ al metodo wait del entrenamientos controller.  -->
 	<% content_for :head do %>
 		<% javascript_tag do %>
 			$(function () {  
-		      setTimeout(refresca_estado, 5000);  
+		      setTimeout(refresca_estado, 500);  
 		  		});  
 
 			function refresca_estado() {  
@@ -21,12 +21,15 @@ al metodo wait del entrenamientos controller.  -->
 
 	<!-- Header1: Apellido, Nombre del nadador en cuestion-->
 	<h1> 
-		<%= Nadador.find(@entrenamiento.nadador_id).apellido %> 
+		<%= Nadador.find(@entrenamiento.nadador_id).apellido %>, 
 		<%= Nadador.find(@entrenamiento.nadador_id).nombre %>
 	</h1>
 
-	
-
+<div style="color:red ;">
+	<b>
+	<%= if @entrenamiento.show_or_wait == false then "ATENCION: no abandone esta pagina antes de que el entrenamiento se muestre como: <Entrenamiento ejecutado>. La adquisicion de datos puede verse comprometida." end %>
+	</b>
+</div>
 	<!-- Inserta el estado o el tiempo segun corresponda mediante la 
 		 lectura del campo show_or_wait. Y el div se refresca automaticamente
 		 cada 1 segundo.  -->
@@ -35,19 +38,13 @@ al metodo wait del entrenamientos controller.  -->
 				llamado por el wait.js.erb cuando se llama al metodo wait del
 				entrenamientos controller. Se le pasan datos dentro de la 
 				etiqueta que abre el DIV.  -->
-				
-				<% if @entrenamiento.show_or_wait == false %>
-						<b>Estado de la unidad central: </b><%= @estado %>               <br>
-				<% end %>
-				<b>	Tipo de prueba:</b> <%= @entrenamiento.tipo_prueba %>      <br>
-				<b>	Distancia:</b>	 	  <%= @entrenamiento.distancia %> metros <br>
-				<b> Tiempo: </b>			  <%= print_tiempo(@entrenamiento.tiempo) %>	        <br>
-			
+				<%= render @entrenamiento %>
 		</div>
 	
 
 
-<br>
+
+<!--
 <div style="float:left; with:50%; height:100px; margin-left:100px; ">
 	<%= button_to 'Guardar Entrenamiento', entrenamiento_path(@entrenamiento), :method =>:put %>
 </div>
@@ -55,5 +52,8 @@ al metodo wait del entrenamientos controller.  -->
 	<%= button_to 'Descartar Entrenamiento',entrenamiento_path(@entrenamiento), :method => :delete, :confirm =>'Esta a punto de borrar un entrenamiento, ¿desea continuar?' %>
 </div>
 <br>
+-->
+
+
 
 
