@@ -13,10 +13,9 @@
 <div style="float:right; with:50%; height:50px; margin-right:350px; ">
 	<% if @entrenamiento.show_or_wait==true %>
 			<%=	button_to 'Volver a Entrenamientos', entrenamientos_home_path, :method => :get %>
-
+	<br>		 
 <%	end %>
 </div>
-	<br>		 
 
 <!-- Este archivo es llamado cada vez que se invoca la linea render @entrenamiento. Esta linea esta en el script wait.js.erb que es llamado cada un segundo por el script que se corre en la pagina /views/entrenamientos/show.html.erb. 
 Por ahora solo actualiza tiempo, aunque en rigor este partial deberia presentar todos los campos del modelo entrenamientos. -->

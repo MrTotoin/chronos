@@ -2,13 +2,13 @@
 	<% content_for :head do %>
 		<%= javascript_tag do %>
 			$(function () {  
-		      setTimeout(refresca_estado, 500);  
+		      setTimeout(refresca_estado, 1000);  
 		  		});  
 
 			function refresca_estado() {  
 		  		var partida_id = $('#div_tiempo').attr('data-id')	
 		  		$.getScript('/wait_partida.js?partida_id='+partida_id);  
-		  		setTimeout(refresca_estado, 1000);  
+		  		setTimeout(refresca_estado, 4000);  
 				};
 		<% end %>
 	<% end %>

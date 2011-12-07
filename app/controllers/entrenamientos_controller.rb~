@@ -104,7 +104,8 @@ class EntrenamientosController < ApplicationController
           read_tiempos(fh)
           #modifico show_or_wait para que no se ejecute mas esta parte del codigo
           @entrenamiento.show_or_wait=true
-          if @entrenamiento.save
+          @entrenamiento.save
+          if @partida.save
         	flash[:notice]="Entrenamiento guardado."
 		mi_archivo = 'buffer_Tx.txt'
     		fhTx = File.open( mi_archivo , 'w' )

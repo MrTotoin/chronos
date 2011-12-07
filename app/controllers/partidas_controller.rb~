@@ -118,6 +118,7 @@ class PartidasController < ApplicationController
 		fhTx.rewind
 		fhTx.close  
       		system("./intercambio")
+		system("./intercambio")      
 	end	
 	puts "--FINALIZADO--"
       end 

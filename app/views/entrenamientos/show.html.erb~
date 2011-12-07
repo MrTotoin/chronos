@@ -13,7 +13,7 @@ al metodo wait del entrenamientos controller.  -->
 			function refresca_estado() {  
 		  		var entrenamiento_id = $('#div_tiempo').attr('data-id')	
 		  		$.getScript('/wait.js?entrenamiento_id=' + entrenamiento_id);  
-		  		setTimeout(refresca_estado, 1000);  
+		  		setTimeout(refresca_estado, 4000);  
 				};
 		<% end %>
 	<% end %>
